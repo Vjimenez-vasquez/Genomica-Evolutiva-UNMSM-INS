@@ -15,28 +15,43 @@ ENTREVISTAS DESTACADAS: https://go.imedia.pe/36QhX, https://go.imedia.pe/3WPZk, 
 
 # Leccion 1 : Práctica I: Obtención de información de secuenciación genómica.
 ```r
-#paso 1
+## DESCARGA DE ARCHIVOS FASTQ
+
+#paso 1 - ingresar a la página base
 https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
-#paso 2
+#paso 2 - descargar el programa
 wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.1.1/sratoolkit.3.1.1-ubuntu64.tar.gz -O stk.tar.gz
-#paso 3
+#paso 3 - descomprimir el archivo
 chmod 777 stk.tar.gz
-#paso 4
+#paso 4 - enviar el programa a la carpeta bin
 export PATH=$PATH:$PWD/sratoolkit.3.0.10-ubuntu64/bin
-#paso 5
+#paso 5 - descargar archivos de secuenciacion (fastq) a partir de una lista en formato "txt"
 prefetch --max-size 50G --option-file sra_accessions_1.txt ;
-#paso 6
+#paso 6 - explorar los argumentos del comando
 prefetch -h
-#paso 7
+#paso 7 - mover de directorio
 mv */*.sra . ;
-#paso 8
+#paso 8 - eliminar las carpetas iniciales (configurar de acuerdo con el archivo "txt")
 rm -r ERR12389866/ ERR12543675/
-#paso 9
+#paso 9 - extraer los archivos fastq 
 fasterq-dump --split-files *.sra ;
-#paso 10
+#paso 10 - comprimir los archivos fastq
 gzip *fastq ;
-#paso 11
+#paso 11 - estimar la calidad de las lecturas
 fastqc *
+
+## DESCARGA DE ARCHIVOS ENSAMBLADOS EN FORMATO FASTA
+
+#paso 1: instalar NCBI-DATASETS
+conda create -n ncbi_datasets
+conda activate ncbi_datasets
+conda install -c conda-forge ncbi-datasets-cli
+
+#paso 2: emplear el archivo "accessions.txt"
+
+#paso 3: descargar los genomas con la lista sugerida. Emplear el codigo "command_ncbidatasets.sh" disponible en https://github.com/Vjimenez-vasquez/NCBI-DATASETS
+
+./command_ncbidatasets.sh accessions.txt 
 ```
 
 # Leccion 2 : Práctica II: Ensamblaje y anotación de genomas bacterianos.
