@@ -132,6 +132,85 @@ conda install conda-forge::r-base
 
 # Leccion 3 : Práctica I: Identificación de factores de virulencia bacteriana.
 ```r
+## A. VFDB
+
+#paso 1 : http://www.mgc.ac.cn/VFs/
+#paso 2 : Default webpage accessible to all users worldwide
+#paso 3 : Download
+#paso 4 : DNA sequences of full dataset
+#paso 5 : Protein sequences of full dataset
+#paso 6 : descomprimir
+gzip -d VFDB_setB_nt.fas.gz 
+gzip -d VFDB_setB_pro.fas.gz
+
+## B. BLAST
+
+#paso 1 : instalacion a traves de CONDA
+conda install bioconda::blast
+or
+conda install -c conda-forge -c bioconda -c defaults blast
+
+#paso 2 : correr BLAST
+makeblastdb -in VFDB_setB_nt.fas -dbtype nucl ;
+blastn -db VFDB_setB_nt.fas -query GCA_001183825.1.fasta -perc_identity 90 -outfmt 6 -num_threads 4 > blast.csv ;
+head blast.csv ;
+cat blast.csv ;
+
+#paso 3 : añadir headers al resultado
+sed '1i query.acc.ver subject.acc.ver perc.identity alignment.length mismatches gap.opens q.start q.end s.start s.end evalue bit.score' blast.csv | tr " " "\t" > blast.2.csv
+
+#paso 4 : revisar resultados
+head blast.2.csv
+cat blast.2.csv
+
+## C. Analizar con R
+
+#paso 1 : instalar R
+conda install -c conda-forge -c bioconda -c defaults r-base
+
+#paso 2 : leer la data resultante de blast#
+data <- read.csv("blast.2.csv", sep="\t", header=TRUE)
+#conocer el número de filas y columnas de la tabla resultante#
+dim(data)
+
+#paso 3 :conocer las filas asignadas a una columna determinada#
+length(data$subject.acc.ver)
+
+#paso 4 : conocer el número de elementos únicos de esa columna#
+length(unique(data$subject.acc.ver))
+length(unique(data$query.acc.ver))
+
+#paso 5 : conocer estadísticos básicos en un solo paso#
+summary(data$query.acc.ver)
+summary(data$alignment.length)
+
+#paso 6 : obtener un boxplot de los porcentajes de identidad#
+boxplot(data$perc.identity)
+boxplot(data$perc.identity, xlab="genoma", ylab="% identidad")
+summary(data$perc.identity)
+data.frame(names(data))
+
+#paso 7 : obtener un plot longitud de alineamiento vs %identidad#
+plot(data$alignment.length, data$perc.identity, xlab="length", ylab="% identity", main="BLASTn VFDB vs Chlamydia", pch=16, col="blue", cex=2)
+
+#paso 8: generar un archivo "bed" con R
+seq <- data.frame(genome=data$query.acc.ver, start=data$q.start, end=data$q.end)
+head(seq)
+write.table(seq, "extract.txt", sep="\t", row.names = F, col.names =F, quot=F)
+
+## D. BEDTOOLS
+
+#paso 1 : instalar bedtools desde conda para extraer las regiones "blasteadas"
+conda install conda install -c conda-forge -c bioconda -c defaults bedtools
+
+#paso 2 : extraer los VFs en formato FASTA
+bedtools getfasta -fi  GCA_001183825.1.fasta -bed extract.txt -fo virulence.fasta
+
+#paso 3 : extraer información de los headers de VFDB 
+grep ">" VFDB_setB_nt.fas | sed -e 's/]\ \[/*/g' | sed -e 's/]//g' | sed -e 's/\ \[/*/g'| sed -e 's/)\ /*/g' | sed -e 's/*(/*/g' | head -n 10 > headers.txt
+
+#paso 4 : traducir las secuencias con virtual ribosome
+https://services.healthtech.dtu.dk/services/VirtualRibosome-2.0/
 ```
 
 # Leccion 4 : Práctica II: Ensamblaje de genomas bacterianos a partir de secuencias nanopore y evaluación de la calidad.
