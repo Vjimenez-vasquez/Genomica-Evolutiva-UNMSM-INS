@@ -347,7 +347,37 @@ quast.py -o quast_results -m 0 consensus.fasta
 ```
 
 # Leccion 8 : Práctica II: Filodinámica y obtención de árboles filogenómicos anotados.
+![Captura desde 2025-04-19 09-49-55](https://github.com/user-attachments/assets/62893de4-b2b7-441c-a4e3-88820a15d8bd)
+
 ```r
+# paso 1 : instalacion
+
+installation : from https://docs.nextstrain.org/en/latest/install.html
+
+conda create -n nextstrain \
+      --override-channels --strict-channel-priority \
+      -c conda-forge -c bioconda --yes \
+      augur auspice nextclade \
+      snakemake git epiweeks pangolin pangolearn \
+      ncbi-datasets-cli csvtk seqkit tsv-utils
+      
+conda activate nextstrain ;
+nextstrain setup --set-default ambient ; 
+
+#paso 2 : alineamiento
+
+mafft --add output.fasta --nomemsave --keeplength --thread 4 --retree 1 --adjustdirection --reorder reference.fasta > output3.fasta ;
+aliview output3.fasta ;
+ls -lh
+
+#paso 3 : augur - nextstrain
+augur refine --alignment input.fasta --tree raw_tree.nwk --metadata metadata.tsv --output-tree refine_tree.nwk --output-node-data node_Data.json --timetree --coalescent skyline --gen-per-year 52 --root best --covariance --date-confidence --date-inference marginal --branch-length-inference marginal --year-bounds 1998 2024 --divergence-units mutations-per-site --seed 12548746 ; 
+augur ancestral --tree refine_tree.nwk --alignment input.fasta --output-node-data ancestral.json --inference marginal --keep-overhangs ; 
+augur translate --tree refine_tree.nwk --ancestral-sequences ancestral.json --reference-sequence sequence.2.gb --output-node-data translate.json ; 
+augur traits --tree refine_tree.nwk --metadata metadata.tsv --columns country province lineage result informe isolate year --confidence --output-node-data traits.json ; 
+augur export v2 --tree refine_tree.nwk --node-data ancestral.json node_Data.json traits.json translate.json --output denv3.json --auspice-config auspice_config.json --geo-resolutions province country --color-by-metadata country province lineage result informe isolate year --panels tree map entropy frequencies --metadata metadata.tsv --lat-longs lat_longs.tsv ; 
+ls -lh ; 
+
 ```
 
 # Leccion 9 : Práctica I: Identificación metagenómica y visualización de resultados.
@@ -484,4 +514,5 @@ pangenome[,1:10]
 #paso 1 : visualizacion en microreact
 https://microreact.org/
 cargar el arbol enraizado (formato .nwk) y la metadata final (out_5.tsv)
+
 ```
