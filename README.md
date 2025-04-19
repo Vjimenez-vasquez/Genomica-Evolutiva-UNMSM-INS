@@ -56,6 +56,72 @@ conda install -c conda-forge ncbi-datasets-cli
 
 # Leccion 2 : Práctica II: Ensamblaje y anotación de genomas bacterianos.
 ```r
+## A. TRIMMING
+
+# paso 1: descargar TRIMMOMATIC
+web oficial: http://www.usadellab.org/cms/?page=trimmomatic
+link directo de descarga del "binary": http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.39.zip
+
+# paso 2: emplear TRIMMOMATIC (loop)
+for r1 in *fastq.gz
+do
+prefix=$(basename $r1 _L001_R1_001.fastq.gz)
+r2=${prefix}_L001_R2_001.fastq.gz
+java -jar trimmomatic-0.39.jar PE -threads 28 $r1 $r2 ${prefix}_f_paired.fq.gz ${prefix}_f_unpaired.fq.gz ${prefix}_r_paired.fq.gz ${prefix}_r_unpaired.fq.gz SLIDINGWINDOW:4:20 MINLEN:50 ;
+done ; 
+
+#paso 3: mover los FASTQ resultantes a una carpeta 
+mkdir trimm ; 
+mv *_paired.fq.gz trimm/ ; 
+rm *_unpaired.fq.gz ;
+cd trimm/ ;
+
+# paso 4: analizar la calidad resultante
+fastqc *.gz -t 25 ; 
+mkdir fastqc ;
+mv *.html *.zip fastqc/ ; 
+ls -lh ;
+
+## B. ENSAMBLAJE
+
+#paso 1: instalar SPADES
+conda create -n spades
+conda install bioconda::spades
+conda activate spades
+
+#paso 2: ensamblar con SPADES (loop)
+for r1 in *fq.gz
+do
+prefix=$(basename $r1 _f_paired.fq.gz)
+r2=${prefix}_r_paired.fq.gz
+spades --pe1-1 $r1 --pe1-2 $r2 --careful --cov-cutoff 100 -t 30 -m 15 -o ${prefix}_spades ;
+mv ${prefix}_spades/scaffolds.fasta ${prefix}_spades/${prefix}_spades_scaffolds.fasta ;
+mv ${prefix}_spades/${prefix}_spades_scaffolds.fasta . ;
+done ;
+rmdir *fq_spades ;
+mv *scaffolds.fasta .. ;
+
+## C. ANOTACION GENOMICA
+
+# paso 1: instalacion de prokka
+conda create -n prokka_env
+conda activate prokka_env
+conda install -c conda-forge -c biocondaconda install conda-forge::r-base prokka
+
+# paso 2: analisis en prokka (loop)
+mkdir annotation/ ;
+for r1 in *fa
+do
+prefix=$(basename $r1 .fa)
+prokka --cpus 4 $r1 -o ${prefix} --prefix ${prefix} --kingdom Viruses ; 
+mv ${prefix}/*.gff annotation/${prefix}.gff
+done ;
+
+# paso 3: instalacion de artemis para visualización
+conda create -n art
+conda activate art
+conda install bioconda::artemis
+conda install conda-forge::r-base
 ```
 
 # Leccion 3 : Práctica I: Identificación de factores de virulencia bacteriana.
