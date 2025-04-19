@@ -131,6 +131,7 @@ conda install conda-forge::r-base
 ```
 
 # Leccion 3 : Práctica I: Identificación de factores de virulencia bacteriana.
+![Captura desde 2025-04-19 08-47-42](https://github.com/user-attachments/assets/c5c47bd5-5104-4e67-a821-caabb312068c)
 ```r
 ## A. VFDB
 
