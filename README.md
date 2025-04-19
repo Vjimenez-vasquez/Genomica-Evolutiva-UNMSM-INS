@@ -215,7 +215,123 @@ https://services.healthtech.dtu.dk/services/VirtualRibosome-2.0/
 ```
 
 # Leccion 4 : Práctica II: Ensamblaje de genomas bacterianos a partir de secuencias nanopore y evaluación de la calidad.
+![Captura desde 2025-04-19 08-50-35](https://github.com/user-attachments/assets/7d9bc79d-bf1c-44e7-b56f-df8bfea3a77f)
 ```r
+## material de apoyo > https://denbi-nanopore-training-course.readthedocs.io/en/stable/index.html ##
+
+## A. INSTALACION DE PROGRAMAS
+
+#paso 1 : NanoPlot - calidad de secuencias Nanopore
+conda install -c conda-forge -c bioconda nanoplot
+
+or
+
+pip install NanoPlot
+pip install NanoPlot --upgrade
+
+#paso 2 : Nanofilt : Filtrado por calidad de lecturas Nanopore
+conda install -c conda-forge -c defaults -c bioconda nanofilt
+
+or 
+
+pip install nanofilt
+pip install nanofilt --upgrade
+
+#paso 3 : Flye: de-novo assembly
+conda install -c bioconda flye
+
+or 
+
+git clone https://github.com/fenderglass/Flye
+cd Flye
+python setup.py install
+
+#paso 4 : Minimap2 - polishing (parte 1)
+conda install -c bioconda minimap2
+
+or
+
+git clone https://github.com/lh3/minimap2
+cd minimap2 && make
+
+#paso 5 : Racon - polishing (parte 2)
+conda install -c bioconda racon
+
+or 
+
+git clone --recursive https://github.com/lbcb-sci/racon.git racon
+cd racon
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+cd build/bin/ 
+export PATH=$PATH:$HOME/bin
+cp racon $HOME/bin
+chmod +x $HOME/bin/racon
+
+#paso 6 : Requerimientos de MEDAKA (Pyabpoa, bcftools, samtools (v1.11), minimap2)
+pip install pyabpoa
+sudo apt install bcftools
+conda install -c bioconda samtools==1.11
+
+#paso 7 : MEDAKA, secuencias consenso (si MEDAKA no funciona correctamente, instala los programas requeridos)
+conda install -c conda-forge –c bioconda medaka
+
+or
+
+pip install medaka
+
+## B. ENSAMBLAJE
+
+#paso 1 : descargar la informacion (códigos SRR17110067 y SRR17110070)
+mkdir sra_files ;
+prefetch --max-size 50G --option-file accessions.txt ;
+mv */*.sra . ;
+fasterq-dump --split-files *.sra 
+gzip *.fastq ;
+mkdir sra_files ;
+mv *.sra sra_files/ ;
+
+#paso 2 : analizar longitudes
+zcat SRR17110067.fastq.gz | grep -n "length" | cut -f2 -d'=' | sort -r -n | uniq | head -n 20
+zcat SRR17110070.fastq.gz | grep -n "length" | cut -f2 -d'=' | sort -r -n | uniq | head -n 20
+
+#paso 3 : NanoPlot
+NanoPlot -t 2 -o SRR17110067_QC --fastq SRR17110067.fastq.gz
+NanoPlot -t 2 -o SRR17110070_QC --fastq SRR17110070.fastq.gz
+
+#paso 4 : NanoFilt
+gunzip -c SRR17110067.fastq.gz | NanoFilt --logfile nanofilt.log -l 500 -q 10 | gzip > SRR17110067.trim.fastq.gz ;
+gunzip -c SRR17110070.fastq.gz | NanoFilt --logfile nanofilt.log -l 500 -q 10 | gzip > SRR17110070.trim.fastq.gz ;
+ls -lh ;
+
+#paso 5 : Flye
+flye -o SRR17110067.genoma --nano-raw SRR17110067.trim.fastq.gz --threads 4 ;
+flye -o SRR17110070.genoma --nano-raw SRR17110070.trim.fastq.gz --threads 4 ;
+ls -lh ;
+
+#paso 6 : Minimap2 + Racon (Polishing)
+minimap2 -x ava-ont -t 4 SRR17110067.genoma/assembly.fasta SRR17110067.trim.fastq.gz > overlaps1.paf ;
+racon -t 4 SRR17110067.trim.fastq.gz overlaps1.paf SRR17110067.genoma/assembly.fasta > SRR17110067.racon1.fasta ;
+
+minimap2 -x ava-ont -t 4 SRR17110070.genoma/assembly.fasta SRR17110070.trim.fastq.gz > overlaps2.paf ;
+racon -t 4 SRR17110070.trim.fastq.gz overlaps2.paf SRR17110070.genoma/assembly.fasta > SRR17110070.racon1.fasta ;
+
+minimap2 -x ava-ont -t 4 SRR17110067.racon1.fasta SRR17110067.trim.fastq.gz > overlaps3.paf ;
+racon -t 4 SRR17110067.trim.fastq.gz overlaps3.paf SRR17110067.racon1.fasta > SRR17110067.racon2.fasta ;
+
+minimap2 -x ava-ont -t 4 SRR17110070.racon1.fasta SRR17110070.trim.fastq.gz > overlaps4.paf ;
+racon -t 4 SRR17110070.trim.fastq.gz overlaps4.paf SRR17110070.racon1.fasta > SRR17110070.racon2.fasta ;
+
+#paso 7 : Medaka (consensus)
+medaka_consensus -i SRR17110070.trim.fastq.gz -d SRR17110070.racon2.fasta -o medaka_SRR17110070 -t 4 ;
+medaka_consensus -i SRR17110067.trim.fastq.gz -d SRR17110067.racon2.fasta -o medaka_SRR17110067 -t 4 ;
+
+#paso 8 : QUAST
+quast.py -o quast_results -m 0 consensus.fasta
+
+#paso 9 :Bandage
 ```
 
 # Leccion 5 : Práctica I: estrategias para la obtención de árboles de máxima verosimilitud.
