@@ -1,5 +1,6 @@
 # Genomica-Evolutiva-UNMSM-INS-
 Codigos empleados en las lecciones de la Asignatura de "Genomica Evolutiva" del Diplomado en Bioinformática aplicada a la Salud Pública
+
 Profesor: Blgo. Victor Jiménez Vásquez
 vr.jimenez.vs@gmail.com, docenteposgrado14.fcb@unmsm.edu.pe
 https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=17249
