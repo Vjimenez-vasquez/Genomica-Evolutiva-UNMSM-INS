@@ -1,5 +1,10 @@
 # Genomica-Evolutiva-UNMSM-INS-
 Codigos empleados en las lecciones de la Asignatura de "Genomica Evolutiva" del Diplomado en Bioinformática aplicada a la Salud Pública
+Profesor: Blgo. Victor Jiménez Vásquez
+vr.jimenez.vs@gmail.com, docenteposgrado14.fcb@unmsm.edu.pe
+https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=17249
+https://orcid.org/my-orcid?orcid=0000-0001-6547-6999
+https://scholar.google.com/citations?hl=en
 
 # Leccion 1 : Práctica I: Obtención de información de secuenciación genómica.
 ```r
