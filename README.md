@@ -15,7 +15,7 @@ ENTREVISTAS DESTACADAS: https://go.imedia.pe/36QhX, https://go.imedia.pe/3WPZk, 
 
 # Leccion 1 : Práctica I: Obtención de información de secuenciación genómica.
 ```r
-## DESCARGA DE ARCHIVOS FASTQ
+## A. DESCARGA DE ARCHIVOS FASTQ
 
 #paso 1 - ingresar a la página base
 https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
@@ -40,7 +40,7 @@ gzip *fastq ;
 #paso 11 - estimar la calidad de las lecturas
 fastqc *
 
-## DESCARGA DE ARCHIVOS ENSAMBLADOS EN FORMATO FASTA
+## B. DESCARGA DE ARCHIVOS ENSAMBLADOS EN FORMATO FASTA
 
 #paso 1: instalar NCBI-DATASETS
 conda create -n ncbi_datasets
