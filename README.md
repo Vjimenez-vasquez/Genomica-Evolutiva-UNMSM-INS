@@ -3,7 +3,7 @@ Codigos empleados en las lecciones de la Asignatura de "Genomica Evolutiva" del 
 
 ## Profesor: Blgo. Victor Jiménez Vásquez
 
-correos: vr.jimenez.vs@gmail.com, docenteposgrado14.fcb@unmsm.edu.pe
+correos: vr.jimenez.vs@gmail.com, vjimenez@ins.gob.pe, docenteposgrado14.fcb@unmsm.edu.pe
 
 CTI-VITAE: https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=17249
 
