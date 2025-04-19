@@ -11,9 +11,7 @@ ORCID: https://orcid.org/my-orcid?orcid=0000-0001-6547-6999
 
 GOOGLE: https://scholar.google.com/citations?hl=en
 
-ENTREVISTAS DESTACADAS: 
-
-https://go.imedia.pe/36QhX, https://go.imedia.pe/3WPZk, https://canaln.pe/actualidad/biologo-ins-sobre-nueva-variante-covid-todavia-no-ha-llegado-al-peru-n464914, https://www.youtube.com/watch?v=HYtZ_JsyHNI&t=7s, https://www.youtube.com/watch?v=M-o-2a2tD8E&t=3s, https://www.youtube.com/watch?v=j1AOTxfqnRw, https://www.youtube.com/watch?v=DjD9Ip8D1_4
+ENTREVISTAS DESTACADAS: https://go.imedia.pe/36QhX, https://go.imedia.pe/3WPZk, https://canaln.pe/actualidad/biologo-ins-sobre-nueva-variante-covid-todavia-no-ha-llegado-al-peru-n464914, https://www.youtube.com/watch?v=HYtZ_JsyHNI&t=7s, https://www.youtube.com/watch?v=M-o-2a2tD8E&t=3s, https://www.youtube.com/watch?v=j1AOTxfqnRw, https://www.youtube.com/watch?v=DjD9Ip8D1_4
 
 # Leccion 1 : Práctica I: Obtención de información de secuenciación genómica.
 ```r
