@@ -354,6 +354,7 @@ quast.py -o quast_results -m 0 consensus.fasta
 ![Captura desde 2025-04-19 09-24-59](https://github.com/user-attachments/assets/fb52e6a4-215c-42ab-a3db-1d53c4a45af0)
 
 Kraken2 databases availabe at : https://benlangmead.github.io/aws-indexes/k2
+
 Bracken is availabe at : https://github.com/jenniferlu717/Bracken
 
 ```r
