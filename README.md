@@ -1,5 +1,5 @@
 # Genomica Evolutiva (UNMSM-INS)
-Codigos empleados en las lecciones de la Asignatura de "Genomica Evolutiva" del Diplomado en Bioinformática aplicada a la Salud Pública
+Códigos empleados en las lecciones de la Asignatura de "Genómica Evolutiva" del Diplomado en Bioinformática aplicada a la Salud Pública
 ![INS_UNMSM](https://github.com/user-attachments/assets/f6791aaa-c3ca-4353-93bf-a9b6cc33067c)
 
 ## Profesor: Blgo. Victor Jiménez Vásquez
