@@ -512,7 +512,7 @@ ls -lh ;
 ```
 
 # Leccion 9 : Práctica I: Identificación metagenómica y visualización de resultados.
-![Captura desde 2025-04-19 09-24-59](https://github.com/user-attachments/assets/fb52e6a4-215c-42ab-a3db-1d53c4a45af0)
+![sankey](https://github.com/user-attachments/assets/fa89c820-36d4-4b4b-9306-274bc7c8d347)
 
 Kraken2 databases availabe at : https://benlangmead.github.io/aws-indexes/k2
 
