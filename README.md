@@ -360,8 +360,28 @@ mv RAx* raxml/ ;
 
 # Leccion 7 : Práctica I: Modelos demográficos.
 ![Captura desde 2025-04-19 11-26-39](https://github.com/user-attachments/assets/587c3511-d121-4e7c-a90f-049943530870)
-
 ```r
+## A. INSTALAR APLICACIONES Y PROGRAMAS (WINDOWS)
+
+#paso 1: web oficial de BEAST
+https://beast.community/
+https://beast.community/install_on_windows
+
+#paso 2: web oficial de JAVA
+Installing JAVA
+https://www.oracle.com/java/technologies/downloads/?er=221886
+Windows
+x64 Installer
+https://download.oracle.com/java/24/latest/jdk-24_windows-x64_bin.exe (sha256)
+
+#paso 3 : descargar BEAGLE
+https://beast.community/beagle
+https://github.com/beagle-dev/beagle-lib
+BEAGLE v4.0.0 for Windows 64-bit
+
+#paso 4 : descargar TRACER
+https://github.com/beast-dev/tracer/releases/tag/v1.7.2
+
 ```
 
 # Leccion 8 : Práctica II: Filodinámica y obtención de árboles filogenómicos anotados.
