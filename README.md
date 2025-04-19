@@ -16,6 +16,7 @@ ENTREVISTAS DESTACADAS: https://go.imedia.pe/36QhX, https://go.imedia.pe/3WPZk, 
 # Leccion 1 : Práctica I: Obtención de información de secuenciación genómica.
 ```r
 ## A. DESCARGA DE ARCHIVOS FASTQ
+![Captura desde 2025-04-18 21-27-20](https://github.com/user-attachments/assets/14ddf24b-bac9-4d0b-aaf8-2acc39725656)
 
 #paso 1 - ingresar a la página base
 https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
