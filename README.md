@@ -14,9 +14,9 @@ GOOGLE: https://scholar.google.com/citations?hl=en
 ENTREVISTAS DESTACADAS: https://go.imedia.pe/36QhX, https://go.imedia.pe/3WPZk, https://canaln.pe/actualidad/biologo-ins-sobre-nueva-variante-covid-todavia-no-ha-llegado-al-peru-n464914, https://www.youtube.com/watch?v=HYtZ_JsyHNI&t=7s, https://www.youtube.com/watch?v=M-o-2a2tD8E&t=3s, https://www.youtube.com/watch?v=j1AOTxfqnRw, https://www.youtube.com/watch?v=DjD9Ip8D1_4
 
 # Leccion 1 : Práctica I: Obtención de información de secuenciación genómica.
+![Captura desde 2025-04-18 21-27-20](https://github.com/user-attachments/assets/14ddf24b-bac9-4d0b-aaf8-2acc39725656)
 ```r
 ## A. DESCARGA DE ARCHIVOS FASTQ
-![Captura desde 2025-04-18 21-27-20](https://github.com/user-attachments/assets/14ddf24b-bac9-4d0b-aaf8-2acc39725656)
 
 #paso 1 - ingresar a la página base
 https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
