@@ -5,6 +5,8 @@ Codigos empleados en las lecciones de la Asignatura de "Genomica Evolutiva" del 
 
 correos: vr.jimenez.vs@gmail.com, vjimenez@ins.gob.pe, docenteposgrado14.fcb@unmsm.edu.pe
 
+LINKED IN: www.linkedin.com/in/victor-jiménez-vásquez-9bb59666
+
 CTI-VITAE: https://ctivitae.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=17249
 
 ORCID: https://orcid.org/my-orcid?orcid=0000-0001-6547-6999
