@@ -351,7 +351,59 @@ quast.py -o quast_results -m 0 consensus.fasta
 ```
 
 # Leccion 9 : Práctica I: Identificación metagenómica y visualización de resultados.
+![Captura desde 2025-04-19 09-24-59](https://github.com/user-attachments/assets/fb52e6a4-215c-42ab-a3db-1d53c4a45af0)
+
+Kraken2 databases availabe at : https://benlangmead.github.io/aws-indexes/k2
+Bracken is availabe at : https://github.com/jenniferlu717/Bracken
+
 ```r
+# path to BRACKEN: /media/ins-bio/DATA01/data_base_download/Bracken-2.7/./bracken
+# path to KRAKEN VIRUS DATABASE: /media/ins-bio/DATA01/data_base_download/KRAKENVIRDB
+# path to KRAKEN STANDARD DATABASE:/media/ins-bio/DATA01/data_base_download/kraken_standard
+
+# path to KRAKEN BIG-DATABASE (104) : /home/administrador/Documentos/KRAKENPlusDB
+# path to KRAKEN16Gb (104) : /home/administrador/Documentos/KRAKEN16Gb
+# path to KRAKEN VIRUS DB (104) :  /home/administrador/Documentos/KRAKENVIRDB
+# path to BRACKEN (104) : /home/administrador/Documentos/Bracken-2.7
+
+#paso 1 : fastqc
+fastqc -t 25 *
+mkdir fastqc ; 
+mv *.html *.zip fastqc/ ; 
+ls -lh ; 
+
+#paso 2 : kraken viral
+for r1 in *fastq.gz
+do
+prefix=$(basename $r1 _L001_R1_001.fastq.gz)
+r2=${prefix}_L001_R2_001.fastq.gz
+kraken2 --paired --use-names --gzip-compressed --db /media/ins-bio/DATA01/data_base_download/KRAKENVIRDB/ --threads 28 $r1 $r2 --report ${prefix}_report.txt --output ${prefix}_kraken2.out ;
+done ;
+rm *.fastq.gz_report.txt ; 
+mkdir kraken_out ;
+mv *.out  kraken_out/ ;
+mkdir kraken_txt ; 
+mv *.txt kraken_txt/ ;  
+cd kraken_txt/ ; 
+ls -lh ; 
+
+#paso 3 : bracken
+for r1 in *_report.txt
+do
+prefix=$(basename $r1 _report.txt)
+/media/ins-bio/DATA01/data_base_download/Bracken-2.7/./bracken -d /media/ins-bio/DATA01/data_base_download/KRAKENVIRDB/ -i $r1 -o ${prefix}.bracken.txt -l S ; 
+done ; 
+mkdir species_report ; 
+mv *_species.txt species_report/ ;
+mkdir bracken_species_abundances ;  
+mv /media/ins-bio/DATA01/data_base_download/Bracken-2.7/*.txt bracken_species_abundances/ ; 
+mv *.bracken.txt bracken_species_abundances/ ;
+ls ;
+
+#paso 4 : PAVIAN en R
+if (!require(remotes)) { install.packages("remotes") }
+remotes::install_github("fbreitwieser/pavian")
+pavian::runApp(port=5000)
 ```
 
 # Leccion 10 : Práctica II: Identificación de regiones homólogas y análisis pangenómico.
