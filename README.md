@@ -358,6 +358,8 @@ mv RAx* raxml/ ;
 ```
 
 # Leccion 7 : Práctica I: Modelos demográficos.
+![Captura desde 2025-04-19 11-26-39](https://github.com/user-attachments/assets/587c3511-d121-4e7c-a90f-049943530870)
+
 ```r
 ```
 
