@@ -355,5 +355,80 @@ quast.py -o quast_results -m 0 consensus.fasta
 ```
 
 # Leccion 10 : Práctica II: Identificación de regiones homólogas y análisis pangenómico.
+![Captura desde 2025-04-19 09-07-03](https://github.com/user-attachments/assets/a0db9b78-01e4-4024-83fa-42441a60020f)
 ```r
+
+## A. INSTALACION DE PROGRAMAS
+#paso 1 : instalacion 1
+conda install -c conda-forge -c defaults -c bioconda roary
+conda install -c conda-forge -c defaults -c bioconda snp-sites
+conda install -c conda-forge -c defaults -c bioconda raxml
+conda install -c conda-forge -c defaults -c bioconda figtree
+
+#paso 2 : fix roary install problems with sudo
+sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
+sudo apt update
+sudo apt-get install roary
+
+## B. ANNOTATION
+
+#paso 1 : annotation (PROKKA)
+
+conda activate prokka_env
+mkdir -p annotation ;
+mkdir -p ffn ;
+for r1 in *fasta
+do
+prefix=$(basename $r1 .fasta)
+prokka --cpus 4 $r1 -o ${prefix} --prefix ${prefix} --kingdom Bacteria ; 
+mv ${prefix}/*.gff annotation/${prefix}.gff
+done ;
+conda deactivate ;
+cp */*.ffn ffn/ ; 
+ls ;
+
+## C. IDENTIFICACION DE REGIONES HOMOLOGAS
+
+#paso 1 : inferring clusters, core genes and accesory genes (ROARY)
+# https://github.com/sanger-pathogens/Roary #
+roary -p 4 -f roary_output -g 200000 -z -r -e -n -v -cd 80 -i 90 annotation/*.gff
+roary -p 4 -f roary_output -g 200000 -r -e -n -v -cd 80 -i 90 annotation/*.gff
+cp roary_output/core_gene_alignment.aln . ;
+ls -lh ;
+
+## D. FILOGENIA
+
+#paso 1 : SNPs alignment (SNP-SITES)
+snp-sites -m -o snp1.phy core_gene_alignment.aln ; 
+snp-sites -m -c -o snp2.phy core_gene_alignment.aln ; 
+ls -lh ;
+
+#paso 2 : phylogeny (RAXML)
+raxmlHPC-PTHREADS -p 1254512 -m GTRCAT -s snp2.phy -n nwk -# 20 -T 4 ;
+mv RAxML_bestTree.nwk raw_tree.nwk ;
+rm RAxML_* ;
+mkdir phylogeny ;
+mv snp1.phy snp2.phy snp2.phy.reduced raw_tree.nwk core_gene_alignment.aln phylogeny/ ;
+
+## E. GENERAR UNA TABLA INFORMATIVA DE DATOS ADJUNTOS, METADATA EN R
+
+#paso 1 : cargar el programa "pangenome_command_2.R" en R o R-Studio
+
+#paso 2 : ingresar la ruta correcta en cada caso (donde se encuentran los archivos "gene_presence_absence.csv" y "metadata_1.tsv")
+setwd("")
+dir()
+
+#paso 3 : ingresar la ruta correcta hasta donde se encuentra el archivo pangenome_command_2.R
+source("../../pangenome_command_2.R")
+
+pangenome <- pres_abs(metadata = "metadata_1.tsv", roary_output = "gene_presence_absence.csv", last_column = "3", output = "out_5.tsv")
+head(pangenome)
+class(pangenome)
+pangenome[,1:10]
+
+## F. MICROREACT
+
+#paso 1 : visualizacion en microreact
+https://microreact.org/
+cargar el arbol enraizado (formato .nwk) y la metadata final (out_5.tsv)
 ```
