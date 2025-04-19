@@ -56,6 +56,7 @@ conda install -c conda-forge ncbi-datasets-cli
 ```
 
 # Leccion 2 : Práctica II: Ensamblaje y anotación de genomas bacterianos.
+![Captura desde 2025-04-18 21-51-53](https://github.com/user-attachments/assets/a4922bb3-c901-4fc8-8342-a4c0a0021681)
 ```r
 ## A. TRIMMING
 
