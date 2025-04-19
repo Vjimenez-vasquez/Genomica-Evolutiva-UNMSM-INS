@@ -2,6 +2,8 @@
 Codigos empleados en las lecciones de la Asignatura de "Genomica Evolutiva" del Diplomado en Bioinformática aplicada a la Salud Pública
 
 ## Profesor: Blgo. Victor Jiménez Vásquez
+![imagen](https://github.com/user-attachments/assets/89700c0f-916f-401c-b885-b22fc228b7fd)
+
 
 correos: vr.jimenez.vs@gmail.com, vjimenez@ins.gob.pe, docenteposgrado14.fcb@unmsm.edu.pe
 
