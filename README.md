@@ -335,7 +335,15 @@ quast.py -o quast_results -m 0 consensus.fasta
 ```
 
 # Leccion 5 : Práctica I: estrategias para la obtención de árboles de máxima verosimilitud.
+![Captura desde 2025-04-19 09-59-39](https://github.com/user-attachments/assets/6f9dc036-ac38-457a-93c6-1df5b65691d1)
 ```r
+#paso 1 : comandos para obtener un arbol ML
+raxmlHPC-PTHREADS -p 123568 -m GTRCAT -s sequences.phy -T 30 -# 4 -n nwk ; 
+rm raw_tree.nwk ;
+mv RAxML_bestTree.nwk raw_tree.nwk ;
+mkdir raxml ; 
+mv RAx* raxml/ ;
+
 ```
 
 # Leccion 6 : Práctica II: Compilación de metadatos.
