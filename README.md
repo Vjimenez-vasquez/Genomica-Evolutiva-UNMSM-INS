@@ -366,6 +366,9 @@ mv RAx* raxml/ ;
 #paso 1: web oficial de BEAST
 https://beast.community/
 https://beast.community/install_on_windows
+https://github.com/beast-dev/beast-mcmc/releases
+BEAST v1.10.4
+BEAST.v1.10.4.zip
 
 #paso 2: web oficial de JAVA
 Installing JAVA
@@ -381,6 +384,51 @@ BEAGLE v4.0.0 for Windows 64-bit
 
 #paso 4 : descargar TRACER
 https://github.com/beast-dev/tracer/releases/tag/v1.7.2
+
+## B. genera el archivo "XML" en BEAUti
+#paso 1 :
+File
+Import Data...
+Cargar el alineamiento FASTA, observar el resultado en la pestaña "Partitions"
+
+#paso 2 :
+Click en la pestaña "Tips"
+check en "Use tip dates"
+click en "Import Dates"
+seleccionar "Parse as a number" o "Parse as a calendar date" según sea el caso
+Tip date sampling (Sampling uniformly from precision)
+
+#paso 3 :
+click en la pestaña "Sites"
+Substitution Model "HKY"
+
+#paso 4 :
+click en la pestaña "Clocks"
+clock Type "Uncorrelated relaxed clock"
+
+#paso 5 :
+click en la pestaña "Trees"
+Tree Prior: "Coalescent: Bayesian Skyline"
+
+#paso 6 :
+click en la pestaña "Priors"
+click + ENTER en todas las opciones
+
+#paso 7 :
+click en la pestaña "MCMC"
+Length of chain: 10000000
+Echo state to screen every: 1000
+Log parameters every : 1000
+click en "Add .txt suffix"
+click "Create tree log file with branch length in substitutions"
+click en "Generate BEAST File..."
+nominar y guardar el archivo "xml"
+
+## C. generar las cadenas de MARKOV-MONTECARLO en BEAST v1.10.4
+#paso 1 :
+Choose file ...
+agregar el archivo xml
+run
 
 ```
 
