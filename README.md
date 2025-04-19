@@ -15,6 +15,28 @@ ENTREVISTAS DESTACADAS: https://go.imedia.pe/36QhX, https://go.imedia.pe/3WPZk, 
 
 # Leccion 1 : Práctica I: Obtención de información de secuenciación genómica.
 ```r
+#paso 1
+https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
+#paso 2
+wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.1.1/sratoolkit.3.1.1-ubuntu64.tar.gz -O stk.tar.gz
+#paso 3
+chmod 777 stk.tar.gz
+#paso 4
+export PATH=$PATH:$PWD/sratoolkit.3.0.10-ubuntu64/bin
+#paso 5
+prefetch --max-size 50G --option-file sra_accessions_1.txt ;
+#paso 6
+prefetch -h
+#paso 7
+mv */*.sra . ;
+#paso 8
+rm -r ERR12389866/ ERR12543675/
+#paso 9
+fasterq-dump --split-files *.sra ;
+#paso 10
+gzip *fastq ;
+#paso 11
+fastqc *
 ```
 
 # Leccion 2 : Práctica II: Ensamblaje y anotación de genomas bacterianos.
