@@ -361,8 +361,9 @@ mv RAx* raxml/ ;
 # Leccion 7 : Práctica I: Modelos demográficos.
 ![Captura desde 2025-04-19 11-26-39](https://github.com/user-attachments/assets/587c3511-d121-4e7c-a90f-049943530870)
 ```r
-## A. INSTALAR APLICACIONES Y PROGRAMAS (WINDOWS)
-
+####################################################
+## A. INSTALAR APLICACIONES Y PROGRAMAS (WINDOWS) ##
+####################################################
 #paso 1: web oficial de BEAST
 https://beast.community/
 https://beast.community/install_on_windows
@@ -385,7 +386,10 @@ BEAGLE v4.0.0 for Windows 64-bit
 #paso 4 : descargar TRACER
 https://github.com/beast-dev/tracer/releases/tag/v1.7.2
 
-## B. genera el archivo "XML" en BEAUti
+##################################################
+## B. genera el archivo "XML" en BEAUti v1.10.4 ##
+##################################################
+
 #paso 1 :
 File
 Import Data...
@@ -424,11 +428,30 @@ click "Create tree log file with branch length in substitutions"
 click en "Generate BEAST File..."
 nominar y guardar el archivo "xml"
 
-## C. generar las cadenas de MARKOV-MONTECARLO en BEAST v1.10.4
+##################################################################
+## C. generar las cadenas de MARKOV-MONTECARLO en BEAST v1.10.4 ##
+##################################################################
+
 #paso 1 :
 Choose file ...
 agregar el archivo xml
 run
+
+######################################
+## D. Observar resultados en TRACER ##
+######################################
+
+#paso 1:
+File
+Import Trace File
+Evaluar que los valores ESS sean mayores a 100 e idealmente mayores a 200
+click en "age (root)"
+Revisar las pestañas "Estimates" y "Marginal Density"
+Seleccionar el TraceFile
+click en Analysis
+click en Bayesian Skyline Reconstruction...
+Trees log File: cargar el archivo con terminacion ".(time).trees"
+Age of youngest tip: indicar la fecha de la muestra más antigua
 
 ```
 
