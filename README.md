@@ -21,7 +21,9 @@ ENTREVISTAS DESTACADAS: https://go.imedia.pe/36QhX, https://go.imedia.pe/3WPZk, 
 # Leccion 1 : Práctica I: Obtención de información de secuenciación genómica.
 ![Captura desde 2025-04-18 21-27-20](https://github.com/user-attachments/assets/14ddf24b-bac9-4d0b-aaf8-2acc39725656)
 ```r
-## A. DESCARGA DE ARCHIVOS FASTQ
+###################################
+## A. DESCARGA DE ARCHIVOS FASTQ ##
+###################################
 
 #paso 1 - ingresar a la página base
 https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
@@ -46,7 +48,9 @@ gzip *fastq ;
 #paso 11 - estimar la calidad de las lecturas
 fastqc *
 
-## B. DESCARGA DE ARCHIVOS ENSAMBLADOS EN FORMATO FASTA
+##########################################################
+## B. DESCARGA DE ARCHIVOS ENSAMBLADOS EN FORMATO FASTA ##
+##########################################################
 
 #paso 1: instalar NCBI-DATASETS
 conda create -n ncbi_datasets
@@ -63,7 +67,9 @@ conda install -c conda-forge ncbi-datasets-cli
 # Leccion 2 : Práctica II: Ensamblaje y anotación de genomas bacterianos.
 ![Captura desde 2025-04-18 21-51-53](https://github.com/user-attachments/assets/a4922bb3-c901-4fc8-8342-a4c0a0021681)
 ```r
-## A. TRIMMING
+#################
+## A. TRIMMING ##
+#################
 
 # paso 1: descargar TRIMMOMATIC
 web oficial: http://www.usadellab.org/cms/?page=trimmomatic
@@ -89,7 +95,9 @@ mkdir fastqc ;
 mv *.html *.zip fastqc/ ; 
 ls -lh ;
 
-## B. ENSAMBLAJE
+###################
+## B. ENSAMBLAJE ##
+###################
 
 #paso 1: instalar SPADES
 conda create -n spades
@@ -108,7 +116,9 @@ done ;
 rmdir *fq_spades ;
 mv *scaffolds.fasta .. ;
 
-## C. ANOTACION GENOMICA
+###########################
+## C. ANOTACION GENOMICA ##
+###########################
 
 # paso 1: instalacion de prokka
 conda create -n prokka_env
@@ -134,7 +144,9 @@ conda install conda-forge::r-base
 # Leccion 3 : Práctica I: Identificación de factores de virulencia bacteriana.
 ![Captura desde 2025-04-19 08-47-42](https://github.com/user-attachments/assets/c5c47bd5-5104-4e67-a821-caabb312068c)
 ```r
-## A. VFDB
+#############
+## A. VFDB ##
+#############
 
 #paso 1 : http://www.mgc.ac.cn/VFs/
 #paso 2 : Default webpage accessible to all users worldwide
@@ -145,7 +157,9 @@ conda install conda-forge::r-base
 gzip -d VFDB_setB_nt.fas.gz 
 gzip -d VFDB_setB_pro.fas.gz
 
-## B. BLAST
+##############
+## B. BLAST ##
+##############
 
 #paso 1 : instalacion a traves de CONDA
 conda install bioconda::blast
@@ -165,7 +179,9 @@ sed '1i query.acc.ver subject.acc.ver perc.identity alignment.length mismatches 
 head blast.2.csv
 cat blast.2.csv
 
-## C. Analizar con R
+#######################
+## C. Analizar con R ##
+#######################
 
 #paso 1 : instalar R
 conda install -c conda-forge -c bioconda -c defaults r-base
@@ -200,7 +216,9 @@ seq <- data.frame(genome=data$query.acc.ver, start=data$q.start, end=data$q.end)
 head(seq)
 write.table(seq, "extract.txt", sep="\t", row.names = F, col.names =F, quot=F)
 
-## D. BEDTOOLS
+#################
+## D. BEDTOOLS ##
+#################
 
 #paso 1 : instalar bedtools desde conda para extraer las regiones "blasteadas"
 conda install conda install -c conda-forge -c bioconda -c defaults bedtools
@@ -220,8 +238,9 @@ https://services.healthtech.dtu.dk/services/VirtualRibosome-2.0/
 ```r
 ## material de apoyo > https://denbi-nanopore-training-course.readthedocs.io/en/stable/index.html ##
 
-## A. INSTALACION DE PROGRAMAS
-
+#################################
+## A. INSTALACION DE PROGRAMAS ##
+#################################
 #paso 1 : NanoPlot - calidad de secuencias Nanopore
 conda install -c conda-forge -c bioconda nanoplot
 
@@ -283,7 +302,9 @@ or
 
 pip install medaka
 
-## B. ENSAMBLAJE
+###################
+## B. ENSAMBLAJE ##
+###################
 
 #paso 1 : descargar la informacion (códigos SRR17110067 y SRR17110070)
 mkdir sra_files ;
@@ -550,8 +571,10 @@ pavian::runApp(port=5000)
 # Leccion 10 : Práctica II: Identificación de regiones homólogas y análisis pangenómico.
 ![Captura desde 2025-04-19 09-07-03](https://github.com/user-attachments/assets/a0db9b78-01e4-4024-83fa-42441a60020f)
 ```r
+#################################
+## A. INSTALACION DE PROGRAMAS ##
+#################################
 
-## A. INSTALACION DE PROGRAMAS
 #paso 1 : instalacion 1
 conda install -c conda-forge -c defaults -c bioconda roary
 conda install -c conda-forge -c defaults -c bioconda snp-sites
@@ -563,8 +586,9 @@ sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
 sudo apt update
 sudo apt-get install roary
 
-## B. ANNOTATION
-
+###################
+## B. ANNOTATION ##
+###################
 #paso 1 : annotation (PROKKA)
 
 conda activate prokka_env
@@ -580,7 +604,9 @@ conda deactivate ;
 cp */*.ffn ffn/ ; 
 ls ;
 
-## C. IDENTIFICACION DE REGIONES HOMOLOGAS
+#############################################
+## C. IDENTIFICACION DE REGIONES HOMOLOGAS ##
+#############################################
 
 #paso 1 : inferring clusters, core genes and accesory genes (ROARY)
 # https://github.com/sanger-pathogens/Roary #
@@ -589,8 +615,9 @@ roary -p 4 -f roary_output -g 200000 -r -e -n -v -cd 80 -i 90 annotation/*.gff
 cp roary_output/core_gene_alignment.aln . ;
 ls -lh ;
 
-## D. FILOGENIA
-
+##################
+## D. FILOGENIA ##
+##################
 #paso 1 : SNPs alignment (SNP-SITES)
 snp-sites -m -o snp1.phy core_gene_alignment.aln ; 
 snp-sites -m -c -o snp2.phy core_gene_alignment.aln ; 
@@ -603,7 +630,9 @@ rm RAxML_* ;
 mkdir phylogeny ;
 mv snp1.phy snp2.phy snp2.phy.reduced raw_tree.nwk core_gene_alignment.aln phylogeny/ ;
 
-## E. GENERAR UNA TABLA INFORMATIVA DE DATOS ADJUNTOS, METADATA EN R
+#######################################################################
+## E. GENERAR UNA TABLA INFORMATIVA DE DATOS ADJUNTOS, METADATA EN R ##
+#######################################################################
 
 #paso 1 : cargar el programa "pangenome_command_2.R" en R o R-Studio
 
@@ -619,8 +648,9 @@ head(pangenome)
 class(pangenome)
 pangenome[,1:10]
 
-## F. MICROREACT
-
+###################
+## F. MICROREACT ##
+###################
 #paso 1 : visualizacion en microreact
 https://microreact.org/
 cargar el arbol enraizado (formato .nwk) y la metadata final (out_5.tsv)
