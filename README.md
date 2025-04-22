@@ -64,7 +64,7 @@ conda install -c conda-forge ncbi-datasets-cli
 ./command_ncbidatasets.sh accessions.txt 
 ```
 
-# Leccion 2 : Práctica II: Ensamblaje y anotación de genomas bacterianos.
+# Leccion 1 : Práctica II: Ensamblaje y anotación de genomas bacterianos.
 ![Captura desde 2025-04-18 21-51-53](https://github.com/user-attachments/assets/a4922bb3-c901-4fc8-8342-a4c0a0021681)
 ```r
 #################
@@ -141,7 +141,7 @@ conda install bioconda::artemis
 conda install conda-forge::r-base
 ```
 
-# Leccion 3 : Práctica I: Identificación de factores de virulencia bacteriana.
+# Leccion 2 : Práctica I: Identificación de factores de virulencia bacteriana.
 ![Captura desde 2025-04-19 08-47-42](https://github.com/user-attachments/assets/c5c47bd5-5104-4e67-a821-caabb312068c)
 ```r
 #############
@@ -233,7 +233,7 @@ grep ">" VFDB_setB_nt.fas | sed -e 's/]\ \[/*/g' | sed -e 's/]//g' | sed -e 's/\
 https://services.healthtech.dtu.dk/services/VirtualRibosome-2.0/
 ```
 
-# Leccion 4 : Práctica II: Ensamblaje de genomas bacterianos a partir de secuencias nanopore y evaluación de la calidad.
+# Leccion 2 : Práctica II: Ensamblaje de genomas bacterianos a partir de secuencias nanopore y evaluación de la calidad.
 ![Captura desde 2025-04-19 08-50-35](https://github.com/user-attachments/assets/7d9bc79d-bf1c-44e7-b56f-df8bfea3a77f)
 ```r
 ## material de apoyo > https://denbi-nanopore-training-course.readthedocs.io/en/stable/index.html ##
@@ -356,7 +356,7 @@ quast.py -o quast_results -m 0 consensus.fasta
 #paso 9 :Bandage
 ```
 
-# Leccion 5 : Práctica I: estrategias para la obtención de árboles de máxima verosimilitud.
+# Leccion 3 : Práctica I: estrategias para la obtención de árboles de máxima verosimilitud.
 ![Captura desde 2025-04-19 09-59-39](https://github.com/user-attachments/assets/6f9dc036-ac38-457a-93c6-1df5b65691d1)
 ```r
 
@@ -374,12 +374,12 @@ mv RAx* raxml/ ;
 
 ```
 
-# Leccion 6 : Práctica II: Compilación de metadatos.
+# Leccion 3 : Práctica II: Compilación de metadatos.
 ![Captura desde 2025-04-19 11-19-42](https://github.com/user-attachments/assets/93b0ccf6-bf54-40c1-b1f2-60e974875dc9)
 ```r
 ```
 
-# Leccion 7 : Práctica I: Modelos demográficos.
+# Leccion 4 : Práctica I: Modelos demográficos.
 ![Captura desde 2025-04-19 11-26-39](https://github.com/user-attachments/assets/587c3511-d121-4e7c-a90f-049943530870)
 ```r
 ####################################################
@@ -476,7 +476,7 @@ Age of youngest tip: indicar la fecha de la muestra más antigua
 
 ```
 
-# Leccion 8 : Práctica II: Filodinámica y obtención de árboles filogenómicos anotados.
+# Leccion 4 : Práctica II: Filodinámica y obtención de árboles filogenómicos anotados.
 ![Captura desde 2025-04-19 09-49-55](https://github.com/user-attachments/assets/62893de4-b2b7-441c-a4e3-88820a15d8bd)
 
 ```r
@@ -511,7 +511,7 @@ ls -lh ;
 
 ```
 
-# Leccion 9 : Práctica I: Identificación metagenómica y visualización de resultados.
+# Leccion 5 : Práctica I: Identificación metagenómica y visualización de resultados.
 ![sankey](https://github.com/user-attachments/assets/fa89c820-36d4-4b4b-9306-274bc7c8d347)
 
 Kraken2 databases availabe at : https://benlangmead.github.io/aws-indexes/k2
@@ -568,7 +568,7 @@ remotes::install_github("fbreitwieser/pavian")
 pavian::runApp(port=5000)
 ```
 
-# Leccion 10 : Práctica II: Identificación de regiones homólogas y análisis pangenómico.
+# Leccion 5 : Práctica II: Identificación de regiones homólogas y análisis pangenómico.
 ![Captura desde 2025-04-19 09-07-03](https://github.com/user-attachments/assets/a0db9b78-01e4-4024-83fa-42441a60020f)
 ```r
 #################################
