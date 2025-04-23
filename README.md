@@ -82,11 +82,12 @@ web oficial: http://www.usadellab.org/cms/?page=trimmomatic
 link directo de descarga del "binary": http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.39.zip
 
 # paso 2: emplear TRIMMOMATIC (loop)
-for r1 in *fastq.gz
+for r1 in *_1.fastq.gz
 do
-prefix=$(basename $r1 _L001_R1_001.fastq.gz)
-r2=${prefix}_L001_R2_001.fastq.gz
-java -jar trimmomatic-0.39.jar PE -threads 28 $r1 $r2 ${prefix}_f_paired.fq.gz ${prefix}_f_unpaired.fq.gz ${prefix}_r_paired.fq.gz ${prefix}_r_unpaired.fq.gz SLIDINGWINDOW:4:20 MINLEN:50 ;
+prefix=$(basename $r1 _1.fastq.gz)
+r2=${prefix}_2.fastq.gz
+echo "procesando los archivos $r1 y $r2"
+java -jar trimmomatic-0.39.jar PE -threads 4 $r1 $r2 ${prefix}_f_paired.fq.gz ${prefix}_f_unpaired.fq.gz ${prefix}_r_paired.fq.gz ${prefix}_r_unpaired.fq.gz SLIDINGWINDOW:4:30 MINLEN:150 ;
 done ; 
 
 #paso 3: mover los FASTQ resultantes a una carpeta 
