@@ -226,7 +226,9 @@ plot(data$alignment.length, data$perc.identity, xlab="length", ylab="% identity"
 #paso 8: generar un archivo "bed" con R
 seq <- data.frame(genome=data$query.acc.ver, start=data$q.start, end=data$q.end)
 head(seq)
-write.table(seq, "extract.txt", sep="\t", row.names = F, col.names =F, quot=F)
+seq2 <- seq[!duplicated(seq),]
+dim(seq2)
+write.table(seq2, "extract.txt", sep="\t", row.names = F, col.names =F, quot=F)
 
 #################
 ## D. BEDTOOLS ##
