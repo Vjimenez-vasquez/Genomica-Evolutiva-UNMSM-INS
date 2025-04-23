@@ -180,7 +180,7 @@ conda install -c conda-forge -c bioconda -c defaults blast
 
 #paso 2 : correr BLAST
 makeblastdb -in VFDB_setB_nt.fas -dbtype nucl ;
-blastn -db VFDB_setB_nt.fas -query GCA_001183825.1.fasta -perc_identity 90 -outfmt 6 -num_threads 4 > blast.csv ;
+blastn -db VFDB_setB_nt.fas -query SRR22391363.contigs.fa -perc_identity 90 -outfmt 6 -num_threads 4 > blast.csv ;
 head blast.csv ;
 cat blast.csv ;
 
@@ -238,7 +238,7 @@ write.table(seq2, "extract.txt", sep="\t", row.names = F, col.names =F, quot=F)
 conda install conda install -c conda-forge -c bioconda -c defaults bedtools
 
 #paso 2 : extraer los VFs en formato FASTA
-bedtools getfasta -fi  GCA_001183825.1.fasta -bed extract.txt -fo virulence.fasta
+bedtools getfasta -fi  SRR22391363.contigs.fa -bed extract.txt -fo virulence.fasta
 
 #paso 3 : extraer información de los headers de VFDB 
 grep ">" VFDB_setB_nt.fas | sed -e 's/]\ \[/*/g' | sed -e 's/]//g' | sed -e 's/\ \[/*/g'| sed -e 's/)\ /*/g' | sed -e 's/*(/*/g' | head -n 10 > headers.txt
