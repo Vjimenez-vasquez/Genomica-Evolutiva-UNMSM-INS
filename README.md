@@ -112,11 +112,12 @@ conda install bioconda::spades
 conda activate spades
 
 #paso 2: ensamblar con SPADES (loop)
-for r1 in *fq.gz
+for r1 in *_f_paired.fq.gz
 do
 prefix=$(basename $r1 _f_paired.fq.gz)
 r2=${prefix}_r_paired.fq.gz
-spades --pe1-1 $r1 --pe1-2 $r2 --careful --cov-cutoff 100 -t 30 -m 15 -o ${prefix}_spades ;
+echo "estimado estudiante: estoy ensamblando los archivos $r1 y $r2 de la muestra $prefix"
+spades.py --pe1-1 $r1 --pe1-2 $r2 --careful -t 4 -m 15 -o ${prefix}_spades ;
 mv ${prefix}_spades/scaffolds.fasta ${prefix}_spades/${prefix}_spades_scaffolds.fasta ;
 mv ${prefix}_spades/${prefix}_spades_scaffolds.fasta . ;
 done ;
