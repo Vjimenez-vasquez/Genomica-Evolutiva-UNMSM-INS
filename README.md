@@ -22,7 +22,7 @@ ENTREVISTAS DESTACADAS: https://go.imedia.pe/36QhX, https://go.imedia.pe/3WPZk, 
 ![Captura desde 2025-04-18 21-27-20](https://github.com/user-attachments/assets/14ddf24b-bac9-4d0b-aaf8-2acc39725656)
 ```r
 
-# MATERIAL:https://drive.google.com/drive/folders/1P4BQVNH3hjesMKsugf3Y5DUfqt7FsWTZ?usp=drive_link
+# MATERIAL: https://drive.google.com/drive/folders/1P4BQVNH3hjesMKsugf3Y5DUfqt7FsWTZ?usp=drive_link
 
 ###################################
 ## A. DESCARGA DE ARCHIVOS FASTQ ##
@@ -70,6 +70,9 @@ conda install -c conda-forge ncbi-datasets-cli
 # Leccion 1 : Práctica II: Ensamblaje y anotación de genomas bacterianos.
 ![Captura desde 2025-04-18 21-51-53](https://github.com/user-attachments/assets/a4922bb3-c901-4fc8-8342-a4c0a0021681)
 ```r
+
+# MATERIAL: https://drive.google.com/drive/folders/1LM7A8B2XlmvJKqT7WAoGGVta_dUXqOpe?usp=drive_link
+
 #################
 ## A. TRIMMING ##
 #################
@@ -363,6 +366,8 @@ quast.py -o quast_results -m 0 consensus.fasta
 ![Captura desde 2025-04-19 09-59-39](https://github.com/user-attachments/assets/6f9dc036-ac38-457a-93c6-1df5b65691d1)
 ```r
 
+#MATERIAL: https://drive.google.com/drive/folders/170xl3zm-hYxb0Gam2jkZCUfFruHz4ks6?usp=drive_link
+
 #paso 1 : alineamiento
 mafft --add output.fasta --nomemsave --keeplength --thread 4 --retree 1 --adjustdirection --reorder reference.fasta > output3.fasta ;
 aliview output3.fasta ;
@@ -385,6 +390,9 @@ mv RAx* raxml/ ;
 # Leccion 4 : Práctica I: Modelos demográficos.
 ![Captura desde 2025-04-19 11-26-39](https://github.com/user-attachments/assets/587c3511-d121-4e7c-a90f-049943530870)
 ```r
+
+#MATERIAL: https://drive.google.com/drive/folders/1k6lakyx52nY5gXXolD8B13XiilvzGWqU?usp=drive_link
+
 ####################################################
 ## A. INSTALAR APLICACIONES Y PROGRAMAS (WINDOWS) ##
 ####################################################
