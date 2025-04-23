@@ -21,6 +21,9 @@ ENTREVISTAS DESTACADAS: https://go.imedia.pe/36QhX, https://go.imedia.pe/3WPZk, 
 # Leccion 1 : Práctica I: Obtención de información de secuenciación genómica.
 ![Captura desde 2025-04-18 21-27-20](https://github.com/user-attachments/assets/14ddf24b-bac9-4d0b-aaf8-2acc39725656)
 ```r
+
+# MATERIAL:https://drive.google.com/drive/folders/1P4BQVNH3hjesMKsugf3Y5DUfqt7FsWTZ?usp=drive_link
+
 ###################################
 ## A. DESCARGA DE ARCHIVOS FASTQ ##
 ###################################
