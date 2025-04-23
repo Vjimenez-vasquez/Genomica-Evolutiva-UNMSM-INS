@@ -122,7 +122,11 @@ mv ${prefix}_spades/scaffolds.fasta ${prefix}_spades/${prefix}_spades_scaffolds.
 mv ${prefix}_spades/${prefix}_spades_scaffolds.fasta . ;
 done ;
 rmdir *fq_spades ;
-mv *scaffolds.fasta .. ;
+
+grep ">" SRR22391363_spades_scaffolds.fasta | head -n 141 | sed -e 's/>//g' > contigs_SRR22391363.txt ;
+grep ">" SRR24105539_spades_scaffolds.fasta | head -n 41 | sed -e 's/>//g' > contigs_SRR24105539.txt ;
+seqtk subseq SRR22391363_spades_scaffolds.fasta contigs_SRR22391363.txt > SRR22391363.contigs.fa ;
+seqtk subseq SRR24105539_spades_scaffolds.fasta contigs_SRR24105539.txt > SRR24105539.contigs.fa  ;
 
 ###########################
 ## C. ANOTACION GENOMICA ##
