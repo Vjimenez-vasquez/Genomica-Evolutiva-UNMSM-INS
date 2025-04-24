@@ -320,9 +320,9 @@ pip install medaka
 ## B. ENSAMBLAJE ##
 ###################
 
-#paso 1 : descargar la informacion (códigos SRR17110067 y SRR17110070)
+#paso 1 : descargar la informacion (códigos SRR21939255 y ERR10828740)
 mkdir sra_files ;
-prefetch --max-size 50G --option-file accessions.txt ;
+prefetch --max-size 50G --option-file nanopore.accessions.txt ;
 mv */*.sra . ;
 fasterq-dump --split-files *.sra 
 gzip *.fastq ;
@@ -330,39 +330,37 @@ mkdir sra_files ;
 mv *.sra sra_files/ ;
 
 #paso 2 : analizar longitudes
-zcat SRR17110067.fastq.gz | grep -n "length" | cut -f2 -d'=' | sort -r -n | uniq | head -n 20
-zcat SRR17110070.fastq.gz | grep -n "length" | cut -f2 -d'=' | sort -r -n | uniq | head -n 20
+zcat SRR21939255.fastq.gz | grep -n "length" | cut -f2 -d'=' | sort -r -n | uniq | head -n 20 ;
+zcat ERR10828740.fastq.gz | grep -n "length" | cut -f2 -d'=' | sort -r -n | uniq | head -n 20 ;
 
 #paso 3 : NanoPlot
-NanoPlot -t 2 -o SRR17110067_QC --fastq SRR17110067.fastq.gz
-NanoPlot -t 2 -o SRR17110070_QC --fastq SRR17110070.fastq.gz
+NanoPlot -t 2 -o SRR21939255_QC --fastq SRR21939255.fastq.gz ;
+NanoPlot -t 2 -o ERR10828740_QC --fastq ERR10828740.fastq.gz ;
 
 #paso 4 : NanoFilt
-gunzip -c SRR17110067.fastq.gz | NanoFilt --logfile nanofilt.log -l 500 -q 10 | gzip > SRR17110067.trim.fastq.gz ;
-gunzip -c SRR17110070.fastq.gz | NanoFilt --logfile nanofilt.log -l 500 -q 10 | gzip > SRR17110070.trim.fastq.gz ;
-ls -lh ;
+gunzip -c SRR21939255.fastq.gz | NanoFilt --logfile nanofilt.log -l 5000 -q 12 | gzip > SRR21939255.trim.fastq.gz ;
+gunzip -c ERR10828740.fastq.gz | NanoFilt --logfile nanofilt.log -l 4000 -q 15 | gzip > ERR10828740.trim.fastq.gz ;
 
 #paso 5 : Flye
-flye -o SRR17110067.genoma --nano-raw SRR17110067.trim.fastq.gz --threads 4 ;
-flye -o SRR17110070.genoma --nano-raw SRR17110070.trim.fastq.gz --threads 4 ;
-ls -lh ;
+flye -o SRR21939255.genoma --nano-raw SRR21939255.trim.fastq.gz --threads 4 ;
+flye -o ERR10828740.genoma --nano-raw ERR10828740.trim.fastq.gz --threads 4 ;
 
 #paso 6 : Minimap2 + Racon (Polishing)
-minimap2 -x ava-ont -t 4 SRR17110067.genoma/assembly.fasta SRR17110067.trim.fastq.gz > overlaps1.paf ;
-racon -t 4 SRR17110067.trim.fastq.gz overlaps1.paf SRR17110067.genoma/assembly.fasta > SRR17110067.racon1.fasta ;
+minimap2 -x ava-ont -t 4 SRR21939255.genoma/assembly.fasta SRR21939255.trim.fastq.gz > SRR21939255.overlaps1.paf ;
+racon -t 4 SRR21939255.trim.fastq.gz SRR21939255.overlaps1.paf SRR21939255.genoma/assembly.fasta > SRR21939255.racon1.fasta ;
 
-minimap2 -x ava-ont -t 4 SRR17110070.genoma/assembly.fasta SRR17110070.trim.fastq.gz > overlaps2.paf ;
-racon -t 4 SRR17110070.trim.fastq.gz overlaps2.paf SRR17110070.genoma/assembly.fasta > SRR17110070.racon1.fasta ;
+minimap2 -x ava-ont -t 4 SRR21939255.racon1.fasta SRR21939255.trim.fastq.gz > SRR21939255.overlaps2.paf ;
+racon -t 4 SRR21939255.trim.fastq.gz SRR21939255.overlaps2.paf SRR21939255.racon1.fasta > SRR21939255.racon2.fasta ;
 
-minimap2 -x ava-ont -t 4 SRR17110067.racon1.fasta SRR17110067.trim.fastq.gz > overlaps3.paf ;
-racon -t 4 SRR17110067.trim.fastq.gz overlaps3.paf SRR17110067.racon1.fasta > SRR17110067.racon2.fasta ;
+minimap2 -x ava-ont -t 4 ERR10828740.genoma/assembly.fasta ERR10828740.trim.fastq.gz > ERR10828740.overlaps1.paf ;
+racon -t 4 ERR10828740.trim.fastq.gz ERR10828740.overlaps1.paf ERR10828740.genoma/assembly.fasta > ERR10828740.racon1.fasta ;
 
-minimap2 -x ava-ont -t 4 SRR17110070.racon1.fasta SRR17110070.trim.fastq.gz > overlaps4.paf ;
-racon -t 4 SRR17110070.trim.fastq.gz overlaps4.paf SRR17110070.racon1.fasta > SRR17110070.racon2.fasta ;
+minimap2 -x ava-ont -t 4 ERR10828740.racon1.fasta ERR10828740.trim.fastq.gz > ERR10828740.overlaps2.paf ;
+racon -t 4 ERR10828740.trim.fastq.gz ERR10828740.overlaps2.paf ERR10828740.racon1.fasta > ERR10828740.racon2.fasta ;
 
 #paso 7 : Medaka (consensus)
-medaka_consensus -i SRR17110070.trim.fastq.gz -d SRR17110070.racon2.fasta -o medaka_SRR17110070 -t 4 ;
-medaka_consensus -i SRR17110067.trim.fastq.gz -d SRR17110067.racon2.fasta -o medaka_SRR17110067 -t 4 ;
+medaka_consensus -i SRR21939255.trim.fastq.gz -d SRR21939255.racon2.fasta -o medaka_SRR21939255 -t 4 ;
+medaka_consensus -i ERR10828740.trim.fastq.gz -d ERR10828740.racon2.fasta -o medaka_ERR10828740 -t 4 ;
 
 #paso 8 : QUAST
 quast.py -o quast_results -m 0 consensus.fasta
