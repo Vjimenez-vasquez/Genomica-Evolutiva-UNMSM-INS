@@ -536,14 +536,9 @@ Kraken2 databases availabe at : https://benlangmead.github.io/aws-indexes/k2
 Bracken is availabe at : https://github.com/jenniferlu717/Bracken
 
 ```r
-# path to BRACKEN: /media/ins-bio/DATA01/data_base_download/Bracken-2.7/./bracken
-# path to KRAKEN VIRUS DATABASE: /media/ins-bio/DATA01/data_base_download/KRAKENVIRDB
-# path to KRAKEN STANDARD DATABASE:/media/ins-bio/DATA01/data_base_download/kraken_standard
-
-# path to KRAKEN BIG-DATABASE (104) : /home/administrador/Documentos/KRAKENPlusDB
-# path to KRAKEN16Gb (104) : /home/administrador/Documentos/KRAKEN16Gb
-# path to KRAKEN VIRUS DB (104) :  /home/administrador/Documentos/KRAKENVIRDB
-# path to BRACKEN (104) : /home/administrador/Documentos/Bracken-2.7
+#paso 0 : descomprimir el archivo "k2_viral_20250402.tar.gz" en una carpeta de nombre "KRAKENVIRDB"
+mkdir KRAKENVIRDB ;
+tar -xvzf k2_viral_20250402.tar.gz -C KRAKENVIRDB ;
 
 #paso 1 : fastqc
 fastqc -t 25 *
