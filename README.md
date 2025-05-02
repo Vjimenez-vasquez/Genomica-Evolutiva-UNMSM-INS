@@ -497,6 +497,9 @@ Age of youngest tip: indicar la fecha de la muestra más antigua
 ![Captura desde 2025-04-19 09-49-55](https://github.com/user-attachments/assets/62893de4-b2b7-441c-a4e3-88820a15d8bd)
 
 ```r
+
+#MATERIAL: https://drive.google.com/drive/folders/1PY0k55EB1_CxsMyR42fpZnWsRYJGJSln?usp=drive_link
+
 # paso 1 : instalacion
 
 installation : from https://docs.nextstrain.org/en/latest/install.html
@@ -513,19 +516,21 @@ nextstrain setup --set-default ambient ;
 
 #paso 2 : alineamiento
 
-mafft --add output.fasta --nomemsave --keeplength --thread 4 --retree 1 --adjustdirection --reorder reference.fasta > output3.fasta ;
-aliview output3.fasta ;
+mafft --6merpair --thread 4 --keeplength --addfragments input_unaligned.fasta reference.fasta > sequences.fasta ;
+aliview sequences.fasta ;
 ls -lh
 
 #paso 3 : augur - nextstrain
-augur tree -a input.fasta --method iqtree --output raw_tree.nwk --substitution-model GTR --nthreads 31 ; 
-augur refine --alignment input.fasta --tree raw_tree.nwk --metadata metadata.tsv --output-tree refine_tree.nwk --output-node-data node_Data.json --timetree --coalescent skyline --gen-per-year 52 --root best --covariance --date-confidence --date-inference marginal --branch-length-inference marginal --year-bounds 1998 2024 --divergence-units mutations-per-site --seed 12548746 ; 
-augur ancestral --tree refine_tree.nwk --alignment input.fasta --output-node-data ancestral.json --inference marginal --keep-overhangs ; 
-augur translate --tree refine_tree.nwk --ancestral-sequences ancestral.json --reference-sequence sequence.2.gb --output-node-data translate.json ; 
-augur traits --tree refine_tree.nwk --metadata metadata.tsv --columns country province lineage result informe isolate year --confidence --output-node-data traits.json ; 
-augur export v2 --tree refine_tree.nwk --node-data ancestral.json node_Data.json traits.json translate.json --output denv3.json --auspice-config auspice_config.json --geo-resolutions province country --color-by-metadata country province lineage result informe isolate year --panels tree map entropy frequencies --metadata metadata.tsv --lat-longs lat_longs.tsv ; 
-ls -lh ; 
 
+conda activate nextstrain ; 
+augur refine --alignment sequences.fasta --tree raw_tree.nwk --metadata metadata.tsv --output-tree refine_tree.nwk --output-node-data node_Data.json --timetree --coalescent skyline --gen-per-year 52 --root best --covariance --date-confidence --date-inference marginal --branch-length-inference marginal --year-bounds 2019 2025 --divergence-units mutations-per-site --seed 12548746 ; 
+augur ancestral --tree refine_tree.nwk --alignment sequences.fasta --output-node-data ancestral.json --inference marginal --keep-overhangs ; 
+augur translate --tree refine_tree.nwk --ancestral-sequences ancestral.json --reference-sequence coronavirus.gb --output-node-data translate.json ; 
+augur traits --tree refine_tree.nwk --metadata metadata.tsv --columns country division host GISAID_lineage GISAID_clade pangolin_lineage scorpio_call --confidence --output-node-data traits.json ; 
+augur export v2 --tree refine_tree.nwk --node-data ancestral.json node_Data.json traits.json translate.json --output final.json --auspice-config auspice_config.json --geo-resolutions country division --color-by-metadata country division host GISAID_lineage GISAID_clade pangolin_lineage scorpio_call --panels tree map entropy frequencies --metadata metadata.tsv --lat-longs lat_longs.tsv ; 
+ls -lh ;
+
+#paso 4 : visualizar el archivo "final.json" en https://auspice.us/
 ```
 
 # Leccion 5 : Práctica I: Identificación metagenómica y visualización de resultados.
