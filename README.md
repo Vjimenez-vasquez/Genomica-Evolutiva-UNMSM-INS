@@ -375,16 +375,15 @@ quast.py -o quast_results -m 0 consensus.fasta
 #MATERIAL: https://drive.google.com/drive/folders/170xl3zm-hYxb0Gam2jkZCUfFruHz4ks6?usp=drive_link
 
 #paso 1 : alineamiento
-mafft --add output.fasta --nomemsave --keeplength --thread 4 --retree 1 --adjustdirection --reorder reference.fasta > output3.fasta ;
-aliview output3.fasta ;
+mafft --add peru.fasta --nomemsave --keeplength --thread 4 --retree 1 --adjustdirection --reorder reference.fasta > output.fasta ;
+aliview output.fasta ;
 ls -lh
 
 #paso 2 : comandos para obtener un arbol ML
-raxmlHPC-PTHREADS -p 123568 -m GTRCAT -s sequences.phy -T 30 -# 4 -n nwk ; 
-rm raw_tree.nwk ;
-mv RAxML_bestTree.nwk raw_tree.nwk ;
-mkdir raxml ; 
-mv RAx* raxml/ ;
+raxmlHPC-PTHREADS -p 123568 -m GTRCAT -s output.phy -T 10 -# 10 -n nwk ;
+raxmlHPCC-PTHREADS -m GTRCAT -p 123568 -b 123568 -# 1000 -s output.phy -T 10 -n nwk2 ;
+raxmlHPC -m GTRCAT -p 12345 -fb -t RAxML_bestTree.nwk -z RAxML_bootstrap.nwk2 -n nwk3 ;
+mv RAxML_bipartitions.nwk3 RAxML_bipartitions.nwk ;
 
 ```
 
