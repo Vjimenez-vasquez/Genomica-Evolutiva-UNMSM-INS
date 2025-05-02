@@ -390,6 +390,33 @@ mv RAxML_bipartitions.nwk3 RAxML_bipartitions.nwk ;
 # Leccion 3 : Práctica II: Compilación de metadatos.
 ![Captura desde 2025-04-19 11-19-42](https://github.com/user-attachments/assets/93b0ccf6-bf54-40c1-b1f2-60e974875dc9)
 ```r
+
+#MATERIAL: https://drive.google.com/drive/folders/15LpGVeorT5tjs-iUiU_sVJye83pmE5Un?usp=drive_link 
+
+#paso 1 : leer las tabla original de metadata
+d <- read.csv("metadata_1.tsv", header=T, sep="\t")
+d1 <- d[,c(1:16)]
+head(d1)
+dim(d1)
+
+#paso 2 : leer las tabla de identificacion de linajes
+e <- read.csv("pangolin.csv", header=T, sep=",")
+e1 <- e[,c(1,2,5)]
+names(e1)[1] <- "strain"
+head(e1)
+dim(e1)
+
+#paso 3 : combinar ambas tablas
+f <- merge(d1,e1,by="strain", all.x=T)
+head(f)
+
+#paso 4 : extraer informacion de año en una nueva columna
+f$year <- substr(f$date, start=1, stop=4)
+head(f)
+dim(f)
+
+#paso 5 : generar la tabla final
+write.table(f, "metadata_2.tsv", row.names=F, col.names=T, sep="\t", quote=F)
 ```
 
 # Leccion 4 : Práctica I: Modelos demográficos.
