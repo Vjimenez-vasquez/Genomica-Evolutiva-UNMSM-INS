@@ -156,6 +156,9 @@ conda install conda-forge::r-base
 # Leccion 2 : Práctica I: Identificación de factores de virulencia bacteriana.
 ![Captura desde 2025-04-19 08-47-42](https://github.com/user-attachments/assets/c5c47bd5-5104-4e67-a821-caabb312068c)
 ```r
+
+#MATERIAL: https://drive.google.com/drive/folders/1BAVXseW0W0YfvCYLigJw3TvrGxCWf65k?usp=drive_link
+
 #############
 ## A. VFDB ##
 #############
@@ -250,7 +253,9 @@ https://services.healthtech.dtu.dk/services/VirtualRibosome-2.0/
 # Leccion 2 : Práctica II: Ensamblaje de genomas bacterianos a partir de secuencias nanopore y evaluación de la calidad.
 ![Captura desde 2025-04-19 08-50-35](https://github.com/user-attachments/assets/7d9bc79d-bf1c-44e7-b56f-df8bfea3a77f)
 ```r
-## material de apoyo > https://denbi-nanopore-training-course.readthedocs.io/en/stable/index.html ##
+
+#MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/1MHQmyLD-YvXGfL4YDTeR2DcsYQWkUA8F?usp=drive_link
+#material de TEORICO > https://denbi-nanopore-training-course.readthedocs.io/en/stable/index.html ##
 
 #################################
 ## A. INSTALACION DE PROGRAMAS ##
@@ -567,6 +572,8 @@ Kraken2 databases availabe at : https://benlangmead.github.io/aws-indexes/k2
 Bracken is availabe at : https://github.com/jenniferlu717/Bracken
 
 ```r
+#MATERIAL: https://drive.google.com/drive/folders/1V8x2feek1IEFje2RGHmHD2a8l9eHuMB4?usp=drive_link
+
 #paso 0 : descomprimir el archivo "k2_viral_20250402.tar.gz" en una carpeta de nombre "KRAKENVIRDB"
 mkdir KRAKENVIRDB ;
 tar -xvzf k2_viral_20250402.tar.gz -C KRAKENVIRDB ;
