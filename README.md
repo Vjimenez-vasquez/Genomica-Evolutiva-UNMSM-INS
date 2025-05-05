@@ -22,7 +22,7 @@ ENTREVISTAS DESTACADAS: https://go.imedia.pe/36QhX, https://go.imedia.pe/3WPZk, 
 ![Captura desde 2025-04-18 21-27-20](https://github.com/user-attachments/assets/14ddf24b-bac9-4d0b-aaf8-2acc39725656)
 ```r
 
-# MATERIAL: https://drive.google.com/drive/folders/1P4BQVNH3hjesMKsugf3Y5DUfqt7FsWTZ?usp=drive_link
+#MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/1P4BQVNH3hjesMKsugf3Y5DUfqt7FsWTZ?usp=drive_link
 
 ###################################
 ## A. DESCARGA DE ARCHIVOS FASTQ ##
@@ -71,7 +71,7 @@ conda install -c conda-forge ncbi-datasets-cli
 ![Captura desde 2025-04-18 21-51-53](https://github.com/user-attachments/assets/a4922bb3-c901-4fc8-8342-a4c0a0021681)
 ```r
 
-# MATERIAL: https://drive.google.com/drive/folders/1LM7A8B2XlmvJKqT7WAoGGVta_dUXqOpe?usp=drive_link
+#MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/1LM7A8B2XlmvJKqT7WAoGGVta_dUXqOpe?usp=drive_link
 
 #################
 ## A. TRIMMING ##
@@ -157,7 +157,7 @@ conda install conda-forge::r-base
 ![Captura desde 2025-04-19 08-47-42](https://github.com/user-attachments/assets/c5c47bd5-5104-4e67-a821-caabb312068c)
 ```r
 
-#MATERIAL: https://drive.google.com/drive/folders/1BAVXseW0W0YfvCYLigJw3TvrGxCWf65k?usp=drive_link
+#MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/1BAVXseW0W0YfvCYLigJw3TvrGxCWf65k?usp=drive_link
 
 #############
 ## A. VFDB ##
@@ -255,7 +255,8 @@ https://services.healthtech.dtu.dk/services/VirtualRibosome-2.0/
 ```r
 
 #MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/1MHQmyLD-YvXGfL4YDTeR2DcsYQWkUA8F?usp=drive_link
-#material de TEORICO > https://denbi-nanopore-training-course.readthedocs.io/en/stable/index.html ##
+
+#INFORMACION ADICIONAL: https://denbi-nanopore-training-course.readthedocs.io/en/stable/index.html
 
 #################################
 ## A. INSTALACION DE PROGRAMAS ##
@@ -377,7 +378,7 @@ quast.py -o quast_results -m 0 consensus.fasta
 ![Captura desde 2025-04-19 09-59-39](https://github.com/user-attachments/assets/6f9dc036-ac38-457a-93c6-1df5b65691d1)
 ```r
 
-#MATERIAL: https://drive.google.com/drive/folders/170xl3zm-hYxb0Gam2jkZCUfFruHz4ks6?usp=drive_link
+#MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/170xl3zm-hYxb0Gam2jkZCUfFruHz4ks6?usp=drive_link
 
 #paso 1 : alineamiento
 mafft --add peru.fasta --nomemsave --keeplength --thread 4 --retree 1 --adjustdirection --reorder reference.fasta > output.fasta ;
@@ -396,7 +397,7 @@ mv RAxML_bipartitions.nwk3 RAxML_bipartitions.nwk ;
 ![Captura desde 2025-04-19 11-19-42](https://github.com/user-attachments/assets/93b0ccf6-bf54-40c1-b1f2-60e974875dc9)
 ```r
 
-#MATERIAL: https://drive.google.com/drive/folders/15LpGVeorT5tjs-iUiU_sVJye83pmE5Un?usp=drive_link 
+#MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/15LpGVeorT5tjs-iUiU_sVJye83pmE5Un?usp=drive_link 
 
 #paso 1 : leer las tabla original de metadata
 d <- read.csv("metadata_1.tsv", header=T, sep="\t")
@@ -428,7 +429,7 @@ write.table(f, "metadata_2.tsv", row.names=F, col.names=T, sep="\t", quote=F)
 ![Captura desde 2025-04-19 11-26-39](https://github.com/user-attachments/assets/587c3511-d121-4e7c-a90f-049943530870)
 ```r
 
-#MATERIAL: https://drive.google.com/drive/folders/1k6lakyx52nY5gXXolD8B13XiilvzGWqU?usp=drive_link
+#MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/1k6lakyx52nY5gXXolD8B13XiilvzGWqU?usp=drive_link
 
 ####################################################
 ## A. INSTALAR APLICACIONES Y PROGRAMAS (WINDOWS) ##
@@ -529,7 +530,7 @@ Age of youngest tip: indicar la fecha de la muestra más antigua
 
 ```r
 
-#MATERIAL: https://drive.google.com/drive/folders/1PY0k55EB1_CxsMyR42fpZnWsRYJGJSln?usp=drive_link
+#MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/1PY0k55EB1_CxsMyR42fpZnWsRYJGJSln?usp=drive_link
 
 # paso 1 : instalacion
 
@@ -572,7 +573,8 @@ Kraken2 databases availabe at : https://benlangmead.github.io/aws-indexes/k2
 Bracken is availabe at : https://github.com/jenniferlu717/Bracken
 
 ```r
-#MATERIAL: https://drive.google.com/drive/folders/1V8x2feek1IEFje2RGHmHD2a8l9eHuMB4?usp=drive_link
+
+#MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/1V8x2feek1IEFje2RGHmHD2a8l9eHuMB4?usp=drive_link
 
 #paso 0 : descomprimir el archivo "k2_viral_20250402.tar.gz" en una carpeta de nombre "KRAKENVIRDB"
 mkdir KRAKENVIRDB ;
@@ -621,6 +623,9 @@ pavian::runApp(port=5000)
 # Leccion 5 : Práctica II: Identificación de regiones homólogas y análisis pangenómico.
 ![Captura desde 2025-04-19 09-07-03](https://github.com/user-attachments/assets/a0db9b78-01e4-4024-83fa-42441a60020f)
 ```r
+
+#MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/11ajKhkLNjfb3LJljYoD7NSAcqQpCG0Gr?usp=drive_link
+
 #################################
 ## A. INSTALACION DE PROGRAMAS ##
 #################################
@@ -644,9 +649,9 @@ sudo apt-get install roary
 conda activate prokka_env
 mkdir -p annotation ;
 mkdir -p ffn ;
-for r1 in *fasta
+for r1 in *fa
 do
-prefix=$(basename $r1 .fasta)
+prefix=$(basename $r1 .fa)
 prokka --cpus 4 $r1 -o ${prefix} --prefix ${prefix} --kingdom Bacteria ; 
 mv ${prefix}/*.gff annotation/${prefix}.gff
 done ;
