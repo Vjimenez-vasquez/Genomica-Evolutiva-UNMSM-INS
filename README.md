@@ -685,29 +685,19 @@ rm RAxML_* ;
 mkdir phylogeny ;
 mv snp1.phy snp2.phy snp2.phy.reduced raw_tree.nwk core_gene_alignment.aln phylogeny/ ;
 
-#######################################################################
-## E. GENERAR UNA TABLA INFORMATIVA DE DATOS ADJUNTOS, METADATA EN R ##
-#######################################################################
+################################
+## E. VISUALIZAR EN PHANDANGO ##
+################################
 
-#paso 1 : cargar el programa "pangenome_command_2.R" en R o R-Studio
+#paso 1 : cargar la metadata ("metadata_rickettsia.csv"), el arbol enraizado ("raw_tree_rooted.nwk") y la tabla "gene_presence_absence.csv" de roary en la pestaña "Landing"
 
-#paso 2 : ingresar la ruta correcta en cada caso (donde se encuentran los archivos "gene_presence_absence.csv" y "metadata_1.tsv")
-setwd("")
-dir()
-
-#paso 3 : ingresar la ruta correcta hasta donde se encuentra el archivo pangenome_command_2.R
-source("../../pangenome_command_2.R")
-
-pangenome <- pres_abs(metadata = "metadata_1.tsv", roary_output = "gene_presence_absence.csv", last_column = "3", output = "out_5.tsv")
-head(pangenome)
-class(pangenome)
-pangenome[,1:10]
+https://jameshadfield.github.io/phandango/#/
 
 ###################
 ## F. MICROREACT ##
 ###################
 #paso 1 : visualizacion en microreact
 https://microreact.org/
-cargar el arbol enraizado (formato .nwk) y la metadata final (out_5.tsv)
+cargar el arbol enraizado (formato .nwk) y la metadata final (.tsv)
 
 ```
