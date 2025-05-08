@@ -45,7 +45,7 @@ prefetch -h
 #paso 7 - mover de directorio
 mv */*.sra . ;
 #paso 8 - eliminar las carpetas iniciales (configurar de acuerdo con el archivo "txt")
-rm -r ERR12389866/ ERR12543675/
+rm -r SRR22391363/ SRR24105539/
 #paso 9 - extraer los archivos fastq 
 fasterq-dump --split-files *.sra ;
 #paso 10 - comprimir los archivos fastq
