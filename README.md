@@ -33,9 +33,11 @@ https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit
 #paso 2 - descargar el programa
 wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.1.1/sratoolkit.3.1.1-ubuntu64.tar.gz -O stk.tar.gz
 #paso 3 - descomprimir el archivo
-chmod 777 stk.tar.gz
+chmod 777 stk.tar.gz ;
+tar -xvzf stk.tar.gz ;
 #paso 4 - enviar el programa a la carpeta bin
-export PATH=$PATH:$PWD/sratoolkit.3.0.10-ubuntu64/bin
+export PATH=$PATH:$PWD/sratoolkit.3.1.1-ubuntu64/bin
+
 #paso 5 - descargar archivos de secuenciacion (fastq) a partir de una lista en formato "txt"
 prefetch --max-size 50G --option-file sra_accessions_1.txt ;
 #paso 6 - explorar los argumentos del comando
