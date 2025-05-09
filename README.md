@@ -142,6 +142,10 @@ conda create -n prokka_env
 conda activate prokka_env
 conda install bioconda/label/cf201901::prokka
 
+ó
+
+# emplee: sudo apt install prokka
+
 # paso 2: analisis en prokka (loop)
 mkdir annotation/ ;
 for r1 in *fa
