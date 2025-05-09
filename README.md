@@ -110,8 +110,11 @@ ls -lh ;
 
 #paso 1: instalar SPADES
 conda create -n spades
-conda install bioconda::spades
 conda activate spades
+conda install bioconda::spades
+
+#paso 1 en caso se detecten problemas
+sudo apt install spades
 
 #paso 2: ensamblar con SPADES (loop)
 for r1 in *_f_paired.fq.gz
@@ -137,7 +140,7 @@ seqtk subseq SRR24105539_spades_scaffolds.fasta contigs_SRR24105539.txt > SRR241
 # paso 1: instalacion de prokka
 conda create -n prokka_env
 conda activate prokka_env
-conda install -c conda-forge -c biocondaconda install conda-forge::r-base prokka
+conda install bioconda/label/cf201901::prokka
 
 # paso 2: analisis en prokka (loop)
 mkdir annotation/ ;
