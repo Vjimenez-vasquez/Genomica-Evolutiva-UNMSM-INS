@@ -234,6 +234,8 @@ data.frame(names(data))
 
 #paso 7 : obtener un plot longitud de alineamiento vs %identidad#
 plot(data$alignment.length, data$perc.identity, xlab="length", ylab="% identity", main="BLASTn VFDB vs Chlamydia", pch=16, col="blue", cex=2)
+abline(h=95, col="blue", lwd=3, lty=2)
+abline(v=200, col="red", lwd=3, lty=2)
 
 #paso 8: generar un archivo "bed" con R
 seq <- data.frame(genome=data$query.acc.ver, start=data$q.start, end=data$q.end)
