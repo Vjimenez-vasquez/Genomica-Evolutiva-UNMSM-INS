@@ -247,7 +247,7 @@ write.table(seq2, "extract.txt", sep="\t", row.names = F, col.names =F, quot=F)
 #################
 
 #paso 1 : instalar bedtools desde conda para extraer las regiones "blasteadas"
-conda install conda install -c conda-forge -c bioconda -c defaults bedtools
+conda install -c conda-forge -c bioconda -c defaults bedtools
 
 #paso 2 : extraer los VFs en formato FASTA
 bedtools getfasta -fi  SRR22391363.contigs.fa -bed extract.txt -fo virulence.fasta
