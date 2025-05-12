@@ -141,6 +141,9 @@ conda install bioconda/label/cf201901::quast ;
 quast -o quast_results_SRR24105539 -m 0 SRR24105539_spades_scaffolds.fasta ;
 quast -o quast_results_SRR22391363 -m 0 SRR22391363_spades_scaffolds.fasta ;
 
+#paso 4: observar los archivos "FASTQ" en Bandage, instalarlo en Windows
+https://rrwick.github.io/Bandage/
+
 ###########################
 ## C. ANOTACION GENOMICA ##
 ###########################
