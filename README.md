@@ -133,6 +133,14 @@ grep ">" SRR24105539_spades_scaffolds.fasta | head -n 41 | sed -e 's/>//g' > con
 seqtk subseq SRR22391363_spades_scaffolds.fasta contigs_SRR22391363.txt > SRR22391363.contigs.fa ;
 seqtk subseq SRR24105539_spades_scaffolds.fasta contigs_SRR24105539.txt > SRR24105539.contigs.fa  ;
 
+#paso 3: analizar la calidad inicial del ensamblado (QUAST)
+conda create -n quast ;
+conda activate quast ;
+conda install bioconda/label/cf201901::quast ;
+
+quast -o quast_results_SRR24105539 -m 0 SRR24105539.contigs.fa ;
+quast -o quast_results_SRR22391363 -m 0 SRR22391363.contigs.fa ;
+
 ###########################
 ## C. ANOTACION GENOMICA ##
 ###########################
