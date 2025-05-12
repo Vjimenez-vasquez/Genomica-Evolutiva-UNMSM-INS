@@ -138,8 +138,8 @@ conda create -n quast ;
 conda activate quast ;
 conda install bioconda/label/cf201901::quast ;
 
-quast -o quast_results_SRR24105539 -m 0 SRR24105539.contigs.fa ;
-quast -o quast_results_SRR22391363 -m 0 SRR22391363.contigs.fa ;
+quast -o quast_results_SRR24105539 -m 0 SRR24105539_spades_scaffolds.fasta ;
+quast -o quast_results_SRR22391363 -m 0 SRR22391363_spades_scaffolds.fasta ;
 
 ###########################
 ## C. ANOTACION GENOMICA ##
