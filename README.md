@@ -39,7 +39,7 @@ tar -xvzf stk.tar.gz ;
 export PATH=$PATH:$PWD/sratoolkit.3.1.1-ubuntu64/bin
 
 #paso 5 - descargar archivos de secuenciacion (fastq) a partir de una lista en formato "txt"
-prefetch --max-size 50G --option-file sra_accessions_1.txt ;
+prefetch --max-size 50G --option-file sra_accessions.txt ;
 #paso 6 - explorar los argumentos del comando
 prefetch -h
 #paso 7 - mover de directorio
