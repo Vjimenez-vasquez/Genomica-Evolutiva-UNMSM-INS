@@ -162,7 +162,7 @@ mkdir annotation/ ;
 for r1 in *fa
 do
 prefix=$(basename $r1 .fa)
-prokka --cpus 4 $r1 -o ${prefix} --prefix ${prefix} --kingdom Viruses ; 
+prokka --cpus 4 $r1 -o ${prefix} --prefix ${prefix} --kingdom Bacteria ; 
 mv ${prefix}/*.gff annotation/${prefix}.gff
 done ;
 
