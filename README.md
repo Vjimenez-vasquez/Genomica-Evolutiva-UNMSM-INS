@@ -374,17 +374,33 @@ flye -o SRR21939255.genoma --nano-raw SRR21939255.trim.fastq.gz --threads 4 ;
 flye -o ERR10828740.genoma --nano-raw ERR10828740.trim.fastq.gz --threads 4 ;
 
 #paso 6 : Minimap2 + Racon (Polishing)
+conda activate minimap2 ;
 minimap2 -x ava-ont -t 4 SRR21939255.genoma/assembly.fasta SRR21939255.trim.fastq.gz > SRR21939255.overlaps1.paf ;
+conda deactivate ;
+conda activate racon ;
 racon -t 4 SRR21939255.trim.fastq.gz SRR21939255.overlaps1.paf SRR21939255.genoma/assembly.fasta > SRR21939255.racon1.fasta ;
+conda deactivate ;
 
+conda activate minimap2 ;
 minimap2 -x ava-ont -t 4 SRR21939255.racon1.fasta SRR21939255.trim.fastq.gz > SRR21939255.overlaps2.paf ;
+conda deactivate ;
+conda activate racon ;
 racon -t 4 SRR21939255.trim.fastq.gz SRR21939255.overlaps2.paf SRR21939255.racon1.fasta > SRR21939255.racon2.fasta ;
+conda deactivate ;
 
+conda activate minimap2 ;
 minimap2 -x ava-ont -t 4 ERR10828740.genoma/assembly.fasta ERR10828740.trim.fastq.gz > ERR10828740.overlaps1.paf ;
+conda deactivate ;
+conda activate racon ;
 racon -t 4 ERR10828740.trim.fastq.gz ERR10828740.overlaps1.paf ERR10828740.genoma/assembly.fasta > ERR10828740.racon1.fasta ;
+conda deactivate ;
 
+conda activate minimap2 ;
 minimap2 -x ava-ont -t 4 ERR10828740.racon1.fasta ERR10828740.trim.fastq.gz > ERR10828740.overlaps2.paf ;
+conda deactivate ;
+conda activate racon ;
 racon -t 4 ERR10828740.trim.fastq.gz ERR10828740.overlaps2.paf ERR10828740.racon1.fasta > ERR10828740.racon2.fasta ;
+conda deactivate ;
 
 #paso 7 : Medaka (consensus)
 medaka_consensus -i SRR21939255.trim.fastq.gz -d SRR21939255.racon2.fasta -o medaka_SRR21939255 -t 4 ;
