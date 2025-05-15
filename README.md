@@ -338,7 +338,7 @@ sudo apt install bcftools
 conda install -c bioconda samtools==1.11
 
 #paso 7 : MEDAKA, secuencias consenso (si MEDAKA no funciona correctamente, instala los programas requeridos)
-conda install -c conda-forge –c bioconda medaka
+conda install -c conda-forge -c bioconda medaka
 
 or
 
