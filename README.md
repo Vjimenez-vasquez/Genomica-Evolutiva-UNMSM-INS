@@ -455,8 +455,8 @@ conda create -n raxml ;
 conda activate raxml ;
 conda install bioconda/label/cf201901::raxml ;
 
-raxmlHPC-PTHREADS -p 123568 -m GTRCAT -s output.phy -T 10 -# 10 -n nwk ;
-raxmlHPC-PTHREADS -m GTRCAT -p 123568 -b 123568 -# 1000 -s output.phy -T 10 -n nwk2 ;
+raxmlHPC-PTHREADS -p 123568 -m GTRCAT -s output_2.phy -T 10 -# 10 -n nwk ;
+raxmlHPC-PTHREADS -m GTRCAT -p 123568 -b 123568 -# 1000 -s output_2.phy -T 10 -n nwk2 ;
 raxmlHPC -m GTRCAT -p 12345 -fb -t RAxML_bestTree.nwk -z RAxML_bootstrap.nwk2 -n nwk3 ;
 mv RAxML_bipartitions.nwk3 RAxML_bipartitions.nwk ;
 
