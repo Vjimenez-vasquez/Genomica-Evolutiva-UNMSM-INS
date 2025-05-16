@@ -442,6 +442,10 @@ conda deactivate ;
 #MATERIAL DE LA CLASE: https://drive.google.com/drive/folders/170xl3zm-hYxb0Gam2jkZCUfFruHz4ks6?usp=drive_link
 
 #paso 1 : alineamiento
+conda create -n mafft ;
+conda activate mafft ;
+conda install bioconda/label/cf201901::mafft ;
+
 mafft --add peru.fasta --nomemsave --keeplength --thread 4 --retree 1 --adjustdirection --reorder reference.fasta > output.fasta ;
 aliview output.fasta ;
 ls -lh
