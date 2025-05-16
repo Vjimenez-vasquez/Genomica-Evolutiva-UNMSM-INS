@@ -284,6 +284,8 @@ https://services.healthtech.dtu.dk/services/VirtualRibosome-2.0/
 ## A. INSTALACION DE PROGRAMAS ##
 #################################
 #paso 1 : NanoPlot - calidad de secuencias Nanopore
+conda create -n nanoplot
+conda activate nanoplot
 conda install -c conda-forge -c bioconda nanoplot
 
 or
@@ -292,6 +294,8 @@ pip install NanoPlot
 pip install NanoPlot --upgrade
 
 #paso 2 : Nanofilt : Filtrado por calidad de lecturas Nanopore
+conda create -n nanofilt
+conda activate nanofilt
 conda install -c conda-forge -c defaults -c bioconda nanofilt
 
 or 
@@ -300,6 +304,8 @@ pip install nanofilt
 pip install nanofilt --upgrade
 
 #paso 3 : Flye: de-novo assembly
+conda create -n flye
+conda activate flye
 conda install -c bioconda flye
 
 or 
@@ -309,6 +315,8 @@ cd Flye
 python setup.py install
 
 #paso 4 : Minimap2 - polishing (parte 1)
+conda create -n minimap2
+conda activate minimap2
 conda install -c bioconda minimap2
 
 or
@@ -317,6 +325,8 @@ git clone https://github.com/lh3/minimap2
 cd minimap2 && make
 
 #paso 5 : Racon - polishing (parte 2)
+conda create -n racon
+conda activate racon
 conda install -c bioconda racon
 
 or 
@@ -338,6 +348,8 @@ sudo apt install bcftools
 conda install -c bioconda samtools==1.11
 
 #paso 7 : MEDAKA, secuencias consenso (si MEDAKA no funciona correctamente, instala los programas requeridos)
+conda create -n medaka
+conda activate medaka
 conda install -c conda-forge -c bioconda medaka
 
 or
@@ -362,16 +374,22 @@ zcat SRR21939255.fastq.gz | grep -n "length" | cut -f2 -d'=' | sort -r -n | uniq
 zcat ERR10828740.fastq.gz | grep -n "length" | cut -f2 -d'=' | sort -r -n | uniq | head -n 20 ;
 
 #paso 3 : NanoPlot
+conda activate nanoplot ;
 NanoPlot -t 2 -o SRR21939255_QC --fastq SRR21939255.fastq.gz ;
 NanoPlot -t 2 -o ERR10828740_QC --fastq ERR10828740.fastq.gz ;
+conda deactivate ;
 
 #paso 4 : NanoFilt
+conda activate nanofilt ;
 gunzip -c SRR21939255.fastq.gz | NanoFilt --logfile nanofilt.log -l 5000 -q 12 | gzip > SRR21939255.trim.fastq.gz ;
 gunzip -c ERR10828740.fastq.gz | NanoFilt --logfile nanofilt.log -l 4000 -q 15 | gzip > ERR10828740.trim.fastq.gz ;
+conda deactivate ;
 
 #paso 5 : Flye
+conda activate flye ;
 flye -o SRR21939255.genoma --nano-raw SRR21939255.trim.fastq.gz --threads 4 ;
 flye -o ERR10828740.genoma --nano-raw ERR10828740.trim.fastq.gz --threads 4 ;
+conda deactivate ;
 
 #paso 6 : Minimap2 + Racon (Polishing)
 conda activate minimap2 ;
@@ -403,11 +421,16 @@ racon -t 4 ERR10828740.trim.fastq.gz ERR10828740.overlaps2.paf ERR10828740.racon
 conda deactivate ;
 
 #paso 7 : Medaka (consensus)
+conda activate medaka ;
 medaka_consensus -i SRR21939255.trim.fastq.gz -d SRR21939255.racon2.fasta -o medaka_SRR21939255 -t 4 ;
 medaka_consensus -i ERR10828740.trim.fastq.gz -d ERR10828740.racon2.fasta -o medaka_ERR10828740 -t 4 ;
+conda deactivate ;
 
 #paso 8 : QUAST
-quast.py -o quast_results -m 0 consensus.fasta
+conda activate quast ;
+quast.py -o SRR21939255_quast_results -m 0 SRR21939255_consensus.fasta ;
+quast.py -o ERR10828740_quast_results -m 0 ERR10828740_consensus.fasta ;
+conda deactivate ;
 
 #paso 9 :Bandage
 ```
