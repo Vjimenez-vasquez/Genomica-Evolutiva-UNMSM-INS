@@ -597,7 +597,7 @@ Seleccionar el TraceFile
 click en Analysis
 click en Bayesian Skyline Reconstruction...
 Trees log File: cargar el archivo con terminacion ".(time).trees"
-Age of youngest tip: indicar la fecha de la muestra más antigua
+Age of youngest tip: indicar la fecha de la muestra más reciente
 
 ```
 
