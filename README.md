@@ -460,6 +460,11 @@ raxmlHPC-PTHREADS -m GTRCAT -p 123568 -b 123568 -# 1000 -s output_2.phy -T 10 -n
 raxmlHPC -m GTRCAT -p 12345 -fb -t RAxML_bestTree.nwk -z RAxML_bootstrap.nwk2 -n nwk3 ;
 mv RAxML_bipartitions.nwk3 RAxML_bipartitions.nwk ;
 
+#paso 3 : visualizar y enraizar con FIGTREE
+conda create -n figtree ;
+conda activate figtree ;
+conda install bioconda::figtree ; 
+
 ```
 
 # Leccion 3 : Práctica II: Compilación de metadatos.
