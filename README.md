@@ -497,6 +497,8 @@ dim(f)
 
 #paso 5 : generar la tabla final
 write.table(f, "metadata_2.tsv", row.names=F, col.names=T, sep="\t", quote=F)
+
+#paso 6 : visualizar en microreact.org
 ```
 
 # Leccion 4 : Práctica I: Modelos demográficos.
