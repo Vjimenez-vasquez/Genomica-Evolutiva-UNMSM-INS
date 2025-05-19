@@ -665,9 +665,9 @@ ls -lh ;
 #paso 2 : kraken viral
 for r1 in *fastq.gz
 do
-prefix=$(basename $r1 _L001_R1_001.fastq.gz)
-r2=${prefix}_L001_R2_001.fastq.gz
-kraken2 --paired --use-names --gzip-compressed --db /KRAKENVIRDB/ --threads 28 $r1 $r2 --report ${prefix}_report.txt --output ${prefix}_kraken2.out ;
+prefix=$(basename $r1 _1.fastq.gz)
+r2=${prefix}_2.fastq.gz
+kraken2 --paired --use-names --gzip-compressed --db /KRAKENVIRDB/ --threads 13 $r1 $r2 --report ${prefix}_report.txt --output ${prefix}_kraken2.out ;
 done ;
 rm *.fastq.gz_report.txt ; 
 mkdir kraken_out ;
