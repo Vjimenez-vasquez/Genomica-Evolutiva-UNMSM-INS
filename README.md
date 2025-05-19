@@ -667,7 +667,7 @@ for r1 in *fastq.gz
 do
 prefix=$(basename $r1 _L001_R1_001.fastq.gz)
 r2=${prefix}_L001_R2_001.fastq.gz
-kraken2 --paired --use-names --gzip-compressed --db /media/ins-bio/DATA01/data_base_download/KRAKENVIRDB/ --threads 28 $r1 $r2 --report ${prefix}_report.txt --output ${prefix}_kraken2.out ;
+kraken2 --paired --use-names --gzip-compressed --db /KRAKENVIRDB/ --threads 28 $r1 $r2 --report ${prefix}_report.txt --output ${prefix}_kraken2.out ;
 done ;
 rm *.fastq.gz_report.txt ; 
 mkdir kraken_out ;
@@ -681,7 +681,7 @@ ls -lh ;
 for r1 in *_report.txt
 do
 prefix=$(basename $r1 _report.txt)
-/media/ins-bio/DATA01/data_base_download/Bracken-2.7/./bracken -d /media/ins-bio/DATA01/data_base_download/KRAKENVIRDB/ -i $r1 -o ${prefix}.bracken.txt -l S ; 
+/media/ins-bio/DATA01/data_base_download/Bracken-2.7/./bracken -d /KRAKENVIRDB/ -i $r1 -o ${prefix}.bracken.txt -l S ; 
 done ; 
 mkdir species_report ; 
 mv *_species.txt species_report/ ;
