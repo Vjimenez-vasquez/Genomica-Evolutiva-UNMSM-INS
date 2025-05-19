@@ -681,7 +681,7 @@ ls -lh ;
 for r1 in *_report.txt
 do
 prefix=$(basename $r1 _report.txt)
-/media/ins-bio/DATA01/data_base_download/Bracken-2.7/./bracken -d /KRAKENVIRDB/ -i $r1 -o ${prefix}.bracken.txt -l S ; 
+/media/ins-bio/DATA01/data_base_download/Bracken-2.7/./bracken -d KRAKENVIRDB/ -i $r1 -o ${prefix}.bracken.txt -l S ; 
 done ; 
 mkdir species_report ; 
 mv *_species.txt species_report/ ;
