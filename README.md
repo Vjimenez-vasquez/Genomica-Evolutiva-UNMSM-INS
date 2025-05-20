@@ -678,22 +678,22 @@ cd kraken_txt/ ;
 ls -lh ; 
 
 #paso 3 : bracken
+cp kraken_txt/* . ;
 for r1 in *_report.txt
 do
 prefix=$(basename $r1 _report.txt)
-/mnt/c/Users/THINKSTATION/Documents/GenEvol/clase5.1/Bracken-master/./bracken -d KRAKENVIRDB/ -i $r1 -o ${prefix}.bracken.txt -l S ; 
+bracken -d KRAKENVIRDB/ -i kraken_txt/${r1} -o ${prefix}.bracken.txt -l S ; 
 done ; 
-mkdir species_report ; 
-mv *_species.txt species_report/ ;
-mkdir bracken_species_abundances ;  
-mv /mnt/c/Users/THINKSTATION/Documents/GenEvol/clase5.1/Bracken-master/*.txt bracken_species_abundances/ ; 
-mv *.bracken.txt bracken_species_abundances/ ;
 ls ;
 
 #paso 4 : PAVIAN en R
 if (!require(remotes)) { install.packages("remotes") }
 remotes::install_github("fbreitwieser/pavian")
 pavian::runApp(port=5000)
+
+o
+
+visualizar on-line en : https://fbreitwieser.shinyapps.io/pavian/ 
 ```
 
 # Leccion 5 : Práctica II: Identificación de regiones homólogas y análisis pangenómico.
