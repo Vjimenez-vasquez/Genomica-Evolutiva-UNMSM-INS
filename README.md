@@ -681,12 +681,12 @@ ls -lh ;
 for r1 in *_report.txt
 do
 prefix=$(basename $r1 _report.txt)
-/media/ins-bio/DATA01/data_base_download/Bracken-2.7/./bracken -d KRAKENVIRDB/ -i $r1 -o ${prefix}.bracken.txt -l S ; 
+/mnt/c/Users/THINKSTATION/Documents/GenEvol/clase5.1/Bracken-master/./bracken -d KRAKENVIRDB/ -i $r1 -o ${prefix}.bracken.txt -l S ; 
 done ; 
 mkdir species_report ; 
 mv *_species.txt species_report/ ;
 mkdir bracken_species_abundances ;  
-mv /media/ins-bio/DATA01/data_base_download/Bracken-2.7/*.txt bracken_species_abundances/ ; 
+mv /mnt/c/Users/THINKSTATION/Documents/GenEvol/clase5.1/Bracken-master/*.txt bracken_species_abundances/ ; 
 mv *.bracken.txt bracken_species_abundances/ ;
 ls ;
 
