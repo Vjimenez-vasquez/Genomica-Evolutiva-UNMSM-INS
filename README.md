@@ -712,10 +712,15 @@ conda install -c conda-forge -c defaults -c bioconda snp-sites
 conda install -c conda-forge -c defaults -c bioconda raxml
 conda install -c conda-forge -c defaults -c bioconda figtree
 
-#paso 2 : fix roary install problems with sudo
+#paso 2 : fix roary install problems with sudo (soo en el environment base)
 sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
 sudo apt update
 sudo apt-get install roary
+
+#paso 3 :instalar snp-sites (conda)
+conda create -n snp-sites ;
+conda activate snp-sites ;
+conda install bioconda/label/cf201901::snp-sites ;
 
 ###################
 ## B. ANNOTATION ##
@@ -741,9 +746,7 @@ ls ;
 
 #paso 1 : inferring clusters, core genes and accesory genes (ROARY)
 # https://github.com/sanger-pathogens/Roary #
-roary -p 4 -f roary_output -g 200000 -z -r -e -n -v -cd 80 -i 90 annotation/*.gff
-roary -p 4 -f roary_output -g 200000 -r -e -n -v -cd 80 -i 90 annotation/*.gff
-cp roary_output/core_gene_alignment.aln . ;
+roary -p 13 -f roary_output -g 200000 -z -r -e -n -v -cd 80 -i 90 *.gff
 ls -lh ;
 
 ##################
